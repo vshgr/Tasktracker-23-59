@@ -20,7 +20,6 @@ struct BubbleView: View {
     @State var isInteractable: Bool
     
     private func getTextSize() -> CGSize {
-        print(bubbleText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 12)]).width)
         return bubbleText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 12)])
     }
     

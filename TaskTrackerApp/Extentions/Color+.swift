@@ -20,10 +20,6 @@ extension Color {
         static func hintCol() -> Color {
             Color("hint")
         }
-        
-        static func violetCol() -> Color {
-            Color("violet")
-        }
     }
 }
 

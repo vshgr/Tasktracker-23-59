@@ -16,12 +16,12 @@ struct MainPageView: View {
         static let filter: Image = Image("filter")
         static let title: String = "tasks"
     }
-
+    
     // MARK: - Fields
     @State private var isAddTaskPopupPresented = false
     @State private var isTaskPagePresented = false
     @State private var isFilterPagePresented = false
-
+    
     // MARK: - Setups
     var body: some View {
         NavigationStack {
@@ -49,7 +49,7 @@ struct MainPageView: View {
                     .padding(.top, CommonConstants.smallContentSpacing)
                     .padding(.horizontal, Grid.stripe)
                     
-                    ScrollView {
+                    ScrollView (showsIndicators: false){
                         VStack(spacing: CommonConstants.contentStackSpacing) {
                             ForEach(0..<10) { index in
                                 Button(action: {
@@ -62,15 +62,31 @@ struct MainPageView: View {
                         }
                     }
                     .padding(.top, CommonConstants.contentStackSpacing)
-                    .padding(.horizontal, Grid.stripe)                    
-                    //                Button(action: {
-                    //                    isAddTaskPopupPresented = true
-                    //                }, label: {
-                    //                    AddTaskGroupButtonsView()
-                    //                })
-                    //                .padding(Grid.stripe)
+                    .padding(.horizontal, Grid.stripe)
+                }
+                VStack (alignment: .trailing){
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {}, label: {
+                            AddTaskGroupButtonsView()
+                        })
+                        .padding(.bottom, Grid.stripe)
+                        .padding(.trailing, Grid.stripe)
+                        .onTapGesture {
+                            isAddTaskPopupPresented = true
+                            print(isAddTaskPopupPresented)
+                        }
+                    }
+                    
+                }
+                if isAddTaskPopupPresented {
+                    Rectangle()
+                        .fill(.black)
+                        .frame(width: 100,height: 100)
                 }
             }
+            
             //        .fullScreenCover(isPresented: $isAddTaskPopupPresented, content: {
             //            NewTaskFirstPage()
             //        })

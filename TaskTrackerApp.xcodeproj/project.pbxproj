@@ -37,6 +37,7 @@
 		48F7B2CB29BC880B00840E4B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CA29BC880B00840E4B /* FeedView.swift */; };
 		48F7B2CD29BC881900840E4B /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CC29BC881900840E4B /* FriendsView.swift */; };
 		48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */; };
+		48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		48F7B2CA29BC880B00840E4B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		48F7B2CC29BC881900840E4B /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelommentComponent.swift; sourceTree = "<group>"; };
+		48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskGroupButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				488EC84A29BBBE5B00BCFD52 /* BubbleView.swift */,
 				488EC84C29BBC23E00BCFD52 /* FriendHeaderView.swift */,
 				48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */,
+				48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				488EC84229BBBCE900BCFD52 /* TasksStackView.swift in Sources */,
 				488EC84929BBBDD800BCFD52 /* Task.swift in Sources */,
 				488EC83529BB983600BCFD52 /* Constants.swift in Sources */,
+				48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
