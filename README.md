@@ -1,3 +1,5 @@
-# SwiftCourseProject
+![alt text](https://github.com/vshgr/23-59-Application/blob/main/logo.svg)  
 
-Tasktracker "23:59"
+# 23:59
+
+Приложение - тасктрекер, которое позволяет добавлять задачи, отслеживать статусы своих задач, просматривать и добавлять задачи друзей  
