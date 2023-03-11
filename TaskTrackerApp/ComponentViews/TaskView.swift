@@ -23,15 +23,15 @@ struct TaskView: View {
     @State private var isDone = false
     private let task: Task = Task()
     private let selfTask: Bool
-    private let width: CGFloat
-    private var dateView = BubbleView()
+    private let width: CGFloat = 13
+    private var dateView: BubbleView
     private var taskClicked: (() -> Void)?
     
     // MARK: - Init
     
     init(isSelfTask: Bool = true) {
         selfTask = isSelfTask
-        width = 13
+        dateView = BubbleView(bubbleText: task.deadline, isInteractable: false)
     }
     
     // MARK: - Views
@@ -52,18 +52,16 @@ struct TaskView: View {
                     .foregroundColor(Color.black)
                     .lineLimit(3)
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    //                    BubbleView(text: task.deadline)
+                    dateView
                     Text(task.groups.joined(separator: Constants.separator))
                         .font(CommonConstants.mainLabelFont)
                         .foregroundColor(Color.dl.hintCol())
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                Text(task.deadline)
-                    .font(CommonConstants.mainLabelFont)
-                    .foregroundColor(.black)
             }
-            .padding(.vertical, CommonConstants.smallContentSpacing)
-            .frame(maxWidth: .infinity)
+            .padding(.all, CommonConstants.smallContentSpacing)
+            .padding(.trailing, 10)
+//            .frame(maxWidth: .infinity)
             .background(Constants.taskColor)
             .onTapGesture {
                 taskClicked?()

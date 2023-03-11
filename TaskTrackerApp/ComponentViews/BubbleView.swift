@@ -10,22 +10,16 @@ import SwiftUI
 struct BubbleView: View {
     // MARK: - Constants
     enum Constants {
-        static let width: CGFloat = 30
+        static let width: CGFloat = 20
         static let numOfLines: Int = 1
     }
     
     // MARK: - Fields
-    private let bubbleText: String
-    @State private var bubbleSelected: Bool = false
-    private let isInteractable: Bool
+    @State var bubbleText: String
+    @State var bubbleSelected: Bool = false
+    @State var isInteractable: Bool
     
-    // MARK: - Init
-    init(text: String = "", isInteractable: Bool = false) {
-        bubbleText = text
-        self.isInteractable = isInteractable
-    }
-    
-    private func getTestSize() -> CGSize {
+    private func getTextSize() -> CGSize {
         print(bubbleText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 12)]).width)
         return bubbleText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 12)])
     }
@@ -37,8 +31,8 @@ struct BubbleView: View {
             .font(.system(size: 12, weight: .bold, design: .default))
             .multilineTextAlignment(.center)
             .lineLimit(Constants.numOfLines)
-            .frame(width: getTestSize().width + Constants.width * 2,
-                   height: getTestSize().height + Constants.width)
+            .frame(width: getTextSize().width + Constants.width * 2,
+                   height: getTextSize().height + Constants.width)
             .background(bubbleSelected ? Color.black : Color.clear)
             .overlay(
                 RoundedRectangle(cornerRadius: 100)
@@ -59,11 +53,14 @@ struct BubbleView: View {
                 .font(.system(size: 12, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
                 .lineLimit(Constants.numOfLines)
-                .frame(width: Constants.width,
-                       height: Constants.width / 6)
+                .frame(width: getTextSize().width + Constants.width * 2,
+                       height: getTextSize().height + Constants.width)
                 .background(Color.clear)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 100)
+                        .stroke(Color.black, lineWidth: 2)
+                )
                 .cornerRadius(100)
-                .border(Color.black, width: 1)
         }
     }
     
@@ -93,7 +90,8 @@ struct BubbleView: View {
 
 struct B: PreviewProvider {
     static var previews: some View {
-        BubbleView(text: "Hello my darling", isInteractable: true)
+        BubbleView(bubbleText: "Hello", isInteractable: true)
     }
+    
 }
 

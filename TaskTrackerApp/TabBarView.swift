@@ -18,7 +18,7 @@ struct CustomTabView: View {
     // MARK: - Views
     var body: some View {
         TabView {
-            EmailView()
+            FeedView()
                 .tabItem {
                     Constants.feed.renderingMode(.template)
                     Text("Feed")
@@ -30,7 +30,7 @@ struct CustomTabView: View {
                     Text("Main")
                 }
             
-            CreateAccountView()
+            FriendsView()
                 .tabItem {
                     Constants.friends.renderingMode(.template)
                     Text("Friends")

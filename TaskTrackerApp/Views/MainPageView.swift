@@ -62,8 +62,7 @@ struct MainPageView: View {
                         }
                     }
                     .padding(.top, CommonConstants.contentStackSpacing)
-                    .padding(.horizontal, Grid.stripe)
-                    
+                    .padding(.horizontal, Grid.stripe)                    
                     //                Button(action: {
                     //                    isAddTaskPopupPresented = true
                     //                }, label: {
