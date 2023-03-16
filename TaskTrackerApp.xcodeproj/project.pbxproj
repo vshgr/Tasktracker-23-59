@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CA9EB0829C26D2400E3377E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CA9EB0729C26D2400E3377E /* GoogleService-Info.plist */; };
 		3CA9EB0B29C270E400E3377E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3CA9EB0A29C270E400E3377E /* FirebaseAnalytics */; };
 		3CA9EB0D29C270E400E3377E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CA9EB0C29C270E400E3377E /* FirebaseAnalyticsSwift */; };
 		3CA9EB1029C2813900E3377E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3CA9EB0F29C2813900E3377E /* FirebaseAuth */; };
@@ -43,10 +42,10 @@
 		48F7B2CD29BC881900840E4B /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CC29BC881900840E4B /* FriendsView.swift */; };
 		48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */; };
 		48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */; };
+		48F7B2D329C34D8900840E4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3CA9EB0729C26D2400E3377E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		488EC7FC29BB7E9F00BCFD52 /* TaskTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		488EC7FF29BB7E9F00BCFD52 /* SwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITestApp.swift; sourceTree = "<group>"; };
 		488EC80129BB7E9F00BCFD52 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		48F7B2CC29BC881900840E4B /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelommentComponent.swift; sourceTree = "<group>"; };
 		48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskGroupButtonsView.swift; sourceTree = "<group>"; };
+		48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 				488EC81329BB84B600BCFD52 /* Extentions */,
 				488EC7FF29BB7E9F00BCFD52 /* SwiftUITestApp.swift */,
 				488EC80329BB7EA000BCFD52 /* Assets.xcassets */,
-				3CA9EB0729C26D2400E3377E /* GoogleService-Info.plist */,
+				48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */,
 				488EC80529BB7EA000BCFD52 /* Preview Content */,
 				488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */,
 			);
@@ -285,12 +285,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				488EC80729BB7EA000BCFD52 /* Preview Assets.xcassets in Resources */,
+				48F7B2D329C34D8900840E4B /* GoogleService-Info.plist in Resources */,
 				488EC82C29BB8E2100BCFD52 /* Raleway-Bold.ttf in Resources */,
 				488EC82929BB8E2100BCFD52 /* Raleway-Regular.ttf in Resources */,
 				488EC82B29BB8E2100BCFD52 /* Raleway-Medium.ttf in Resources */,
 				488EC80429BB7EA000BCFD52 /* Assets.xcassets in Resources */,
 				488EC82A29BB8E2100BCFD52 /* mainFont.otf in Resources */,
-				3CA9EB0829C26D2400E3377E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
