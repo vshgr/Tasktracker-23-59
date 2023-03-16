@@ -6,6 +6,34 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+
+class AppViewModel: ObservableObject {
+    
+    let auth = Auth.auth()
+    
+    var signedIn: Bool {
+        return auth.currentUser != nil
+    }
+    
+    func signIn(email: String, password: String) {
+        auth.signIn(withEmail: email, password: password) { result, error in
+            guard result != nil, error == nil else {
+                return
+            }
+        }
+    }
+    
+    func signUp(email: String, password: String) {
+        auth.createUser(withEmail: email, password: password) { result, error in
+            guard result != nil, error == nil else {
+                return
+            }
+        }
+    }
+}
 
 struct EmailView: View {
     @State private var email: String = ""
@@ -13,6 +41,17 @@ struct EmailView: View {
     @State private var showAlert: Bool = false
     @State private var errorMessage: String = ""
     @State var navigate: Bool = false
+    
+    @EnvironmentObject var viewModel: AppViewModel
+    
+    // METHOD FOR STORING USER DATA
+    func logInClicked() -> Void {
+        guard !email.isEmpty, !password.isEmpty else {
+            return
+        }
+        
+        viewModel.signIn(email: email, password: password)
+    }
     
     var body: some View {
         NavigationStack {
