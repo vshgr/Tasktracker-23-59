@@ -46,10 +46,6 @@ struct EmailView: View {
     
     // METHOD FOR STORING USER DATA
     func logInClicked() -> Void {
-        guard !email.isEmpty, !password.isEmpty else {
-            return
-        }
-        
         viewModel.signIn(email: email, password: password)
     }
     
@@ -76,6 +72,8 @@ struct EmailView: View {
                     
                     navigate = !flag
                     showAlert = flag
+                    
+                    logInClicked()
                     
                 }
                 .padding(.horizontal, Grid.stripe * 2)
