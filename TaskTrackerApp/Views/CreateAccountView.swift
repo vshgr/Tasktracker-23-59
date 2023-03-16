@@ -41,6 +41,7 @@ struct CreateAccountView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
+            .navigationBarBackButtonHidden(true)
             .navigationTitle("Create account")
             .navigationDestination(
                 isPresented: $navigate) {

@@ -43,6 +43,7 @@
 		48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */; };
 		48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */; };
 		48F7B2D329C34D8900840E4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */; };
+		48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D429C3B13D00840E4B /* MyProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelommentComponent.swift; sourceTree = "<group>"; };
 		48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskGroupButtonsView.swift; sourceTree = "<group>"; };
 		48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48F7B2D429C3B13D00840E4B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				488EC84329BBBD6A00BCFD52 /* MainPageView.swift */,
 				48F7B2CA29BC880B00840E4B /* FeedView.swift */,
 				48F7B2CC29BC881900840E4B /* FriendsView.swift */,
+				48F7B2D429C3B13D00840E4B /* MyProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				488EC83329BB926E00BCFD52 /* InputView.swift in Sources */,
 				488EC80029BB7E9F00BCFD52 /* SwiftUITestApp.swift in Sources */,
 				488EC84729BBBDA300BCFD52 /* TaskView.swift in Sources */,
+				48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */,
 				488EC84D29BBC23E00BCFD52 /* FriendHeaderView.swift in Sources */,
 				488EC84429BBBD6A00BCFD52 /* MainPageView.swift in Sources */,
 				488EC80E29BB842300BCFD52 /* ButtonView.swift in Sources */,

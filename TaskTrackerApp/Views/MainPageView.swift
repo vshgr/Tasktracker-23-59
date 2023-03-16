@@ -21,6 +21,7 @@ struct MainPageView: View {
     @State private var isAddTaskPopupPresented = false
     @State private var isTaskPagePresented = false
     @State private var isFilterPagePresented = false
+    @State private var isProfilePresented = false
     
     // MARK: - Setups
     var body: some View {
@@ -32,6 +33,9 @@ struct MainPageView: View {
                     ProfileInfoView()
                         .padding(.top, CommonConstants.topSpace)
                         .padding(.horizontal, Grid.stripe)
+                        .onTapGesture {
+                            isProfilePresented = true
+                        }
                     
                     HStack(spacing: CommonConstants.smallContentSpacing) {
                         Text(Constants.title)
@@ -97,6 +101,12 @@ struct MainPageView: View {
             //            FilterPage()
             //        })
         }
+        .navigationDestination(
+            isPresented: $isProfilePresented) {
+                MyProfileView()
+                Text("")
+                    .hidden()
+            }
         .navigationBarHidden(true)
     }
 }
