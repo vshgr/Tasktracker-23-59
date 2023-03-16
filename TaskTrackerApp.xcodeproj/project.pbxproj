@@ -23,7 +23,7 @@
 		488EC82A29BB8E2100BCFD52 /* mainFont.otf in Resources */ = {isa = PBXBuildFile; fileRef = 488EC82629BB8E2100BCFD52 /* mainFont.otf */; };
 		488EC82B29BB8E2100BCFD52 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 488EC82729BB8E2100BCFD52 /* Raleway-Medium.ttf */; };
 		488EC82C29BB8E2100BCFD52 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 488EC82829BB8E2100BCFD52 /* Raleway-Bold.ttf */; };
-		488EC83129BB91B900BCFD52 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83029BB91B900BCFD52 /* EmailView.swift */; };
+		488EC83129BB91B900BCFD52 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83029BB91B900BCFD52 /* LoginView.swift */; };
 		488EC83329BB926E00BCFD52 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83229BB926E00BCFD52 /* InputView.swift */; };
 		488EC83529BB983600BCFD52 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83429BB983600BCFD52 /* Constants.swift */; };
 		488EC83729BBA2E300BCFD52 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83629BBA2E300BCFD52 /* CreateAccountView.swift */; };
@@ -31,7 +31,6 @@
 		488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83A29BBA5F000BCFD52 /* Validate.swift */; };
 		488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83C29BBBC4400BCFD52 /* ProfileInfoView.swift */; };
 		488EC84029BBBC8400BCFD52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC83F29BBBC8400BCFD52 /* User.swift */; };
-		488EC84229BBBCE900BCFD52 /* TasksStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84129BBBCE900BCFD52 /* TasksStackView.swift */; };
 		488EC84429BBBD6A00BCFD52 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84329BBBD6A00BCFD52 /* MainPageView.swift */; };
 		488EC84729BBBDA300BCFD52 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84629BBBDA300BCFD52 /* TaskView.swift */; };
 		488EC84929BBBDD800BCFD52 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84829BBBDD800BCFD52 /* Task.swift */; };
@@ -44,6 +43,8 @@
 		48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */; };
 		48F7B2D329C34D8900840E4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */; };
 		48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D429C3B13D00840E4B /* MyProfileView.swift */; };
+		48F7B2D729C3B86800840E4B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D629C3B86800840E4B /* RegisterView.swift */; };
+		48F7B2DA29C3CA7B00840E4B /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,7 @@
 		488EC82729BB8E2100BCFD52 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
 		488EC82829BB8E2100BCFD52 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		488EC82E29BB8F7900BCFD52 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		488EC83029BB91B900BCFD52 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		488EC83029BB91B900BCFD52 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		488EC83229BB926E00BCFD52 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		488EC83429BB983600BCFD52 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		488EC83629BBA2E300BCFD52 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		488EC83A29BBA5F000BCFD52 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		488EC83C29BBBC4400BCFD52 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		488EC83F29BBBC8400BCFD52 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		488EC84129BBBCE900BCFD52 /* TasksStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStackView.swift; sourceTree = "<group>"; };
 		488EC84329BBBD6A00BCFD52 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		488EC84629BBBDA300BCFD52 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		488EC84829BBBDD800BCFD52 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -82,6 +82,8 @@
 		48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskGroupButtonsView.swift; sourceTree = "<group>"; };
 		48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48F7B2D429C3B13D00840E4B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		48F7B2D629C3B86800840E4B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		488EC7FE29BB7E9F00BCFD52 /* TaskTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
+				48F7B2D829C3CA5400840E4B /* Firebase */,
 				488EC82E29BB8F7900BCFD52 /* Info.plist */,
 				488EC83E29BBBC6900BCFD52 /* Models */,
 				488EC81929BB871200BCFD52 /* Fonts */,
@@ -163,7 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				488EC80129BB7E9F00BCFD52 /* WelcomeView.swift */,
-				488EC83029BB91B900BCFD52 /* EmailView.swift */,
+				488EC83029BB91B900BCFD52 /* LoginView.swift */,
+				48F7B2D629C3B86800840E4B /* RegisterView.swift */,
 				488EC83629BBA2E300BCFD52 /* CreateAccountView.swift */,
 				488EC84329BBBD6A00BCFD52 /* MainPageView.swift */,
 				48F7B2CA29BC880B00840E4B /* FeedView.swift */,
@@ -190,7 +194,6 @@
 				488EC83229BB926E00BCFD52 /* InputView.swift */,
 				488EC83829BBA32400BCFD52 /* ProfileView.swift */,
 				488EC83C29BBBC4400BCFD52 /* ProfileInfoView.swift */,
-				488EC84129BBBCE900BCFD52 /* TasksStackView.swift */,
 				488EC84629BBBDA300BCFD52 /* TaskView.swift */,
 				488EC84A29BBBE5B00BCFD52 /* BubbleView.swift */,
 				488EC84C29BBC23E00BCFD52 /* FriendHeaderView.swift */,
@@ -218,6 +221,14 @@
 				488EC84829BBBDD800BCFD52 /* Task.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		48F7B2D829C3CA5400840E4B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,15 +315,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F7B2DA29C3CA7B00840E4B /* FirebaseAuth.swift in Sources */,
 				48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */,
 				488EC81529BB84E000BCFD52 /* Font+.swift in Sources */,
 				488EC80229BB7E9F00BCFD52 /* WelcomeView.swift in Sources */,
 				488EC81229BB84AA00BCFD52 /* Color+.swift in Sources */,
 				488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */,
 				488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */,
-				488EC83129BB91B900BCFD52 /* EmailView.swift in Sources */,
+				488EC83129BB91B900BCFD52 /* LoginView.swift in Sources */,
 				48F7B2CB29BC880B00840E4B /* FeedView.swift in Sources */,
 				488EC84029BBBC8400BCFD52 /* User.swift in Sources */,
+				48F7B2D729C3B86800840E4B /* RegisterView.swift in Sources */,
 				48F7B2CD29BC881900840E4B /* FriendsView.swift in Sources */,
 				488EC83729BBA2E300BCFD52 /* CreateAccountView.swift in Sources */,
 				488EC83329BB926E00BCFD52 /* InputView.swift in Sources */,
@@ -326,7 +339,6 @@
 				488EC84B29BBBE5B00BCFD52 /* BubbleView.swift in Sources */,
 				488EC84F29BBD7CE00BCFD52 /* TabBarView.swift in Sources */,
 				488EC83929BBA32400BCFD52 /* ProfileView.swift in Sources */,
-				488EC84229BBBCE900BCFD52 /* TasksStackView.swift in Sources */,
 				488EC84929BBBDD800BCFD52 /* Task.swift in Sources */,
 				488EC83529BB983600BCFD52 /* Constants.swift in Sources */,
 				48F7B2D129BC922000840E4B /* AddTaskGroupButtonsView.swift in Sources */,

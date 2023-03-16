@@ -17,7 +17,6 @@ struct MyProfileView: View {
                 ProfileView()
                     .padding(.top, CommonConstants.topSpace)
                 
-                
                 Spacer()
                 ButtonView(title: "Log out") {
                     isSignedOut = true
@@ -26,9 +25,7 @@ struct MyProfileView: View {
                     } catch let signOutError as NSError {
                         isSignedOut = false
                         print("Error signing out: %@", signOutError)
-                    }
-                    print(viewModel.signedIn)
-                    
+                    }                    
                 }
                 .padding(.bottom, Grid.stripe * 2)
                 .padding(.horizontal, Grid.stripe * 2)
@@ -36,7 +33,7 @@ struct MyProfileView: View {
             }
         }
         .navigationDestination(isPresented: $isSignedOut) {
-            EmailView()
+            WelcomeView()
         }
     }
 }

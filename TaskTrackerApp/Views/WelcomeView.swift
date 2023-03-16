@@ -10,7 +10,9 @@ import SwiftUI
 struct WelcomeView: View {
     // MARK: - Fields
     let onboardingIconView = Image("onboarding_logo")
-    @State var navigate: Bool = false
+    @State var navigateToLogin: Bool = false
+    @State var navigateToRegister: Bool = false
+
     
     // MARK: - Body
     var body: some View {
@@ -26,19 +28,39 @@ struct WelcomeView: View {
                     
                     Spacer()
                     ButtonView(title: "Sign in") {
-                        navigate = true
+                        navigateToLogin = true
                     }
+                    .padding(.horizontal, Grid.stripe * 2)
+                    Button(action: {
+                       navigateToRegister = true
+                    }, label: {
+                        Text("Sign up")
+                            .font(.dl.mainFont())
+                            .foregroundColor(.black)
+                            .frame(height: 70)
+                            .frame(maxWidth: .infinity)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 35)
+                                    .stroke(Color.black, lineWidth: 2)
+                            )
+                    })
                     .padding(.horizontal, Grid.stripe * 2)
                     .padding(.bottom, Grid.stripe * 2)
                 }
             }
             .navigationBarHidden(true)
             .navigationDestination(
-                isPresented: $navigate) {
-                    EmailView()
+                isPresented: $navigateToLogin) {
+                    LoginView()
                     Text("")
                         .hidden()
                 }
+                .navigationDestination(
+                    isPresented: $navigateToRegister) {
+                        RegisterView()
+                        Text("")
+                            .hidden()
+                    }
         }
     }
 }
