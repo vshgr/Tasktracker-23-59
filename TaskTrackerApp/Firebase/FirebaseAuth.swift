@@ -26,14 +26,44 @@ enum FBError: Error, Identifiable {
 }
 
 class AppViewModel: ObservableObject {
-    
+    // MARK: - Fields
+    @Published var users = [User]()
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?
     
+    // MARK: - Getter
     var signedIn: Bool {
         return auth.currentUser != nil
     }
+    
+    // MARK: - Actions
+    func fetchData() {
+        db.collection("users").addSnapshotListener { (querySnapshot, error) in
+            guard let users = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.users = users.map { queryDocumentSnapshot -> User in
+                let data = queryDocumentSnapshot.data()
+                let name = data["name"] as? String ?? ""
+                let username = data["username"] as? String ?? ""
+                let email = data["email"] as? String ?? ""
+                return User(name: name, username: username, email: email, profilePicUrl: "none")
+            }
+        }
+    }
+    
+    func getUser() -> User? {
+        for user in users {
+            if user.email == auth.currentUser?.email {
+                return user
+            }
+        }
+        return nil
+    }
+    
     
     func signIn (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
@@ -64,20 +94,6 @@ class AppViewModel: ObservableObject {
     }
     
     func insertNewUser(email: String, password: String) {
-//        var ref: DocumentReference? = nil
-//        ref = db.collection("users").addDocument(data: [
-//            "email": email,
-//            "name": "",
-//            "password": password,
-//            "username": ""
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
-        
         db.collection("users").document(email).setData([
             "email": email,
             "name": "",
@@ -92,53 +108,11 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func getCurrentUser() -> FirebaseAuth.User? {
-        if (auth.currentUser != nil) {
-            return auth.currentUser
-        }
-        
-        return nil
-    }
-    
     func insertUserInfo(email: String, username: String, name: String) {
         let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
         docRef.updateData([
             "username": username,
             "name": name
         ])
-    }
-    
-    func getUserName() -> String {
-        let email: String = auth.currentUser?.email ?? ""
-        var username: String = ""
-        let docRef = db.collection("users").document(email)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let data = document.data()
-                username = data!["username"]! as? String ?? ""
-                print(username)
-            } else {
-                print("Document does not exist")
-            }
-        }
-        
-        return username
-    }
-    
-    func getName() -> String {
-        let email: String = auth.currentUser?.email ?? "qwerty@gmail.com"
-        var name: String = ""
-        let docRef = db.collection("users").document(email)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let data = document.data()
-                name = data!["name"]! as? String ?? ""
-                print(name)
-            } else {
-                print("Document does not exist")
-            }
-        }
-        
-        return name
     }
 }
