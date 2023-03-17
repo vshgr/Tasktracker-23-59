@@ -5,8 +5,6 @@
 //  Created by Алиса Вышегородцева on 17.03.2023.
 //
 
-import Foundation
-
 import SwiftUI
 
 struct NewTaskPageView: View {

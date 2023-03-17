@@ -52,14 +52,10 @@ struct WelcomeView: View {
             .navigationDestination(
                 isPresented: $navigateToLogin) {
                     LoginView()
-                    Text("")
-                        .hidden()
                 }
                 .navigationDestination(
                     isPresented: $navigateToRegister) {
                         RegisterView()
-                        Text("")
-                            .hidden()
                     }
         }
     }

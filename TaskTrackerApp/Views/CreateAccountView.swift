@@ -56,8 +56,6 @@ struct CreateAccountView: View {
             .navigationDestination(
                 isPresented: $navigate) {
                     MainPageView()
-                    Text("")
-                        .hidden()
                 }
         }
     }

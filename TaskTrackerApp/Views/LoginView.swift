@@ -55,8 +55,6 @@ struct LoginView: View {
             .navigationDestination(
                 isPresented: $navigate) {
                     MainPageView()
-                    Text("")
-                        .hidden()
                 }
         }
     }

@@ -22,17 +22,22 @@ struct MainPageView: View {
     @State private var isTaskPagePresented = false
     @State private var isFilterPagePresented = false
     @State private var isProfilePresented = false
+    @State private var isNewTaskPagePresented = false
     private var addGroup = AddTaskGroupButtonsView()
     
-    func taskClicked () {
-        
+    init() {
+        addGroup.addTaskClicked = taskClicked
     }
+    
+    func taskClicked () {
+        print("hello from main")
+        isNewTaskPagePresented = true
+    }
+    
     // MARK: - Setups
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.white.edgesIgnoringSafeArea(.all)
-                
                 VStack (alignment: .leading) {
                     ProfileInfoView()
                         .padding(.top, CommonConstants.topSpace)
@@ -70,17 +75,17 @@ struct MainPageView: View {
                     .padding(.top, CommonConstants.contentStackSpacing)
                     .padding(.horizontal, Grid.stripe)
                 }
-                VStack (alignment: .trailing){
+                VStack (alignment: .trailing) {
                     Spacer()
                     HStack {
                         Spacer()
                         addGroup
-                        .padding(.bottom, Grid.stripe)
-                        .padding(.trailing, Grid.stripe)
-                        .onTapGesture {
-                            isAddTaskPopupPresented = true
-                            print(isAddTaskPopupPresented)
-                        }
+                            .padding(.bottom, Grid.stripe)
+                            .padding(.trailing, Grid.stripe)
+                            .onTapGesture {
+                                isAddTaskPopupPresented = true
+                                print(isAddTaskPopupPresented)
+                            }
                     }
                     
                 }
@@ -90,22 +95,23 @@ struct MainPageView: View {
                         .frame(width: 100,height: 100)
                 }
             }
+        }
+        .navigationDestination(
+            isPresented: $isProfilePresented) {
+                MyProfileView()
+            }
             .navigationDestination(
-                isPresented: $isProfilePresented) {
-                    MyProfileView()
-                    Text("")
-                        .hidden()
+                isPresented: $isNewTaskPagePresented) {
+                    NewTaskPageView()
                 }
                 .navigationDestination(
                     isPresented: $isTaskPagePresented) {
                         TaskPageView()
-                        Text("")
-                            .hidden()
                     }
                     .navigationBarHidden(true)
-        }
     }
 }
+
 
 struct MainTasksPage_Previews: PreviewProvider {
     static var previews: some View {

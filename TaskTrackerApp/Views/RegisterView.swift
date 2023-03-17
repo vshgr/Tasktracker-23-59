@@ -47,12 +47,6 @@ struct RegisterView: View {
                     signUp(email: email, password: password)
                 }
                 .padding(.horizontal, Grid.stripe * 2)
-                Text("Already have an accout? Log in")
-                    .font(.dl.mainFont())
-                    .padding(.bottom, Grid.stripe * 2)
-                    .onTapGesture {
-                        isLoginPresented = true
-                    }
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
@@ -60,14 +54,10 @@ struct RegisterView: View {
             .navigationDestination(
                 isPresented: $isLoginPresented) {
                     LoginView()
-                    Text("")
-                        .hidden()
                 }
-            .navigationDestination(
+                .navigationDestination(
                     isPresented: $navigate) {
                         CreateAccountView()
-                        Text("")
-                            .hidden()
                     }
         }
     }
