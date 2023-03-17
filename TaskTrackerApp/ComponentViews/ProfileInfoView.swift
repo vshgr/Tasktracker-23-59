@@ -15,14 +15,16 @@ struct ProfileInfoView: View {
     
     // MARK: - Properties
     private let user = User()
+    @EnvironmentObject var viewModel: AppViewModel
+    
     
     // MARK: - View
     var body: some View {
         HStack(spacing: CommonConstants.contentStackSpacing) {
             VStack(alignment: .leading) {
-                Text(user.name)
+                Text("\(viewModel.getName())")
                     .font(.dl.ralewayBold(20))
-                Text("@\(user.username)")
+                Text("@\(viewModel.getUserName())")
                     .font(.system(size: 14))
             }
             .frame(maxWidth: .infinity, alignment: .leading)

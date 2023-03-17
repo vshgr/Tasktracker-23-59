@@ -28,6 +28,7 @@ enum FBError: Error, Identifiable {
 class AppViewModel: ObservableObject {
     
     let auth = Auth.auth()
+    let db = Firestore.firestore()
     @Published var errorMessage: String?
     
     var signedIn: Bool {
@@ -63,8 +64,6 @@ class AppViewModel: ObservableObject {
     }
     
     func insertNewUser(email: String, password: String) {
-        let db = Firestore.firestore()
-        
 //        var ref: DocumentReference? = nil
 //        ref = db.collection("users").addDocument(data: [
 //            "email": email,
@@ -91,7 +90,55 @@ class AppViewModel: ObservableObject {
                 print("Document successfully written!")
             }
         }
+    }
+    
+    func getCurrentUser() -> FirebaseAuth.User? {
+        if (auth.currentUser != nil) {
+            return auth.currentUser
+        }
         
+        return nil
+    }
+    
+    func insertUserInfo(email: String, username: String, name: String) {
+        let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
+        docRef.updateData([
+            "username": username,
+            "name": name
+        ])
+    }
+    
+    func getUserName() -> String {
+        let email: String = auth.currentUser?.email ?? ""
+        var username: String = ""
+        let docRef = db.collection("users").document(email)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                username = data!["username"]! as? String ?? ""
+                print(username)
+            } else {
+                print("Document does not exist")
+            }
+        }
         
+        return username
+    }
+    
+    func getName() -> String {
+        let email: String = auth.currentUser?.email ?? "qwerty@gmail.com"
+        var name: String = ""
+        let docRef = db.collection("users").document(email)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                name = data!["name"]! as? String ?? ""
+                print(name)
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+        return name
     }
 }
