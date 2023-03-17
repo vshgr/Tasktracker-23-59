@@ -54,7 +54,8 @@ struct LoginView: View {
             }
             .navigationDestination(
                 isPresented: $navigate) {
-                    MainPageView()
+//                    MainPageView()
+                    CustomTabView()
                 }
         }
     }
@@ -62,7 +63,8 @@ struct LoginView: View {
     
     var body: some View {
         if viewModel.signedIn {
-            MainPageView()
+//            MainPageView()
+            CustomTabView()
         } else {
             content
         }

@@ -145,10 +145,10 @@
 				488EC81629BB85EC00BCFD52 /* Views */,
 				488EC81329BB84B600BCFD52 /* Extentions */,
 				488EC7FF29BB7E9F00BCFD52 /* SwiftUITestApp.swift */,
+				488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */,
 				488EC80329BB7EA000BCFD52 /* Assets.xcassets */,
 				48F7B2D229C34D8900840E4B /* GoogleService-Info.plist */,
 				488EC80529BB7EA000BCFD52 /* Preview Content */,
-				488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */,
 			);
 			path = TaskTrackerApp;
 			sourceTree = "<group>";

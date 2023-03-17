@@ -15,7 +15,7 @@ struct FeedView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             developmentComponent
                 .padding()
-            
+                .navigationBarHidden(true)
         }
     }
 }

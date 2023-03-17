@@ -38,6 +38,7 @@ struct MainPageView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                Color.white.edgesIgnoringSafeArea(.all)
                 VStack (alignment: .leading) {
                     ProfileInfoView()
                         .padding(.top, CommonConstants.topSpace)

@@ -55,7 +55,8 @@ struct CreateAccountView: View {
             .navigationTitle("Create account")
             .navigationDestination(
                 isPresented: $navigate) {
-                    MainPageView()
+//                    MainPageView()
+                    CustomTabView()
                 }
         }
     }
