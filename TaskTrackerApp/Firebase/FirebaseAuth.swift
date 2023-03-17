@@ -61,4 +61,37 @@ class AppViewModel: ObservableObject {
             }
         }
     }
+    
+    func insertNewUser(email: String, password: String) {
+        let db = Firestore.firestore()
+        
+//        var ref: DocumentReference? = nil
+//        ref = db.collection("users").addDocument(data: [
+//            "email": email,
+//            "name": "",
+//            "password": password,
+//            "username": ""
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                print("Document added with ID: \(ref!.documentID)")
+//            }
+//        }
+        
+        db.collection("users").document(email).setData([
+            "email": email,
+            "name": "",
+            "password": password,
+            "username": ""
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
+        
+    }
 }

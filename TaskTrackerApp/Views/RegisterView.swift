@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseFirestore
 
 struct RegisterView: View {
     @State private var email: String = ""
@@ -23,6 +25,7 @@ struct RegisterView: View {
             switch result {
             case (.success(_)) :
                 navigate = true
+                viewModel.insertNewUser(email: email, password: password)
             case(.failure(let error)):
                 viewModel.errorMessage = error.errorMessage
                 errorMessage = viewModel.errorMessage ?? ""
