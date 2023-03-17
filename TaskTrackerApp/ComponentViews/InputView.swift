@@ -46,6 +46,7 @@ struct InputView: View {
                         .foregroundColor(.black)
                         .keyboardType(keyboardType)
                         .textContentType(.emailAddress)
+                        .autocapitalization(.none)
                 } else if inputType == .date {
                     DatePicker(hint, selection: .constant(Date()), displayedComponents: [.hourAndMinute])
                         .datePickerStyle(WheelDatePickerStyle())
@@ -53,6 +54,7 @@ struct InputView: View {
                     SecureField(hint, text: $text)
                         .foregroundColor(.black)
                         .keyboardType(keyboardType)
+                        .autocapitalization(.none)
                 }
                 Rectangle()
                     .frame(height: 1)
