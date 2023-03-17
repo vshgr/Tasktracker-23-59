@@ -16,7 +16,8 @@ struct AddTaskGroupButtonsView: View {
     }
     
     @State var buttonClicked: Bool = false
-    var addTaskClicked: (() -> Void)?
+    @Binding var isAddTaskClicked: Bool
+//    var addTaskClicked: (() -> Void)?
     
     // MARK: - Body
     var body: some View {
@@ -24,7 +25,7 @@ struct AddTaskGroupButtonsView: View {
             if (buttonClicked) {
                 ButtonView(title: "Add task", height: 40) {
                     print("hello there")
-                    addTaskClicked?()
+                    isAddTaskClicked = true
                 }
                 .frame(width: Constants.width)
                 ButtonView(title: "Add group", height: 40)
@@ -59,9 +60,9 @@ struct AddTaskGroupButtonsView: View {
 
 
 
-struct Ada: PreviewProvider {
-    static var previews: some View {
-        AddTaskGroupButtonsView()
-    }
-}
+//struct Ada: PreviewProvider {
+//    static var previews: some View {
+//        AddTaskGroupButtonsView(isAddTaskClicked: false)
+//    }
+//}
 

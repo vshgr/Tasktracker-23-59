@@ -18,21 +18,10 @@ struct MainPageView: View {
     }
     
     // MARK: - Fields
-    @State private var isAddTaskPopupPresented = false
-    @State private var isTaskPagePresented = false
-    @State private var isFilterPagePresented = false
-    @State private var isProfilePresented = false
-    @State private var isNewTaskPagePresented = false
-    private var addGroup = AddTaskGroupButtonsView()
-    
-    init() {
-        addGroup.addTaskClicked = taskClicked
-    }
-    
-    func taskClicked () {
-        print("hello from main")
-        isNewTaskPagePresented = true
-    }
+    @State private var isTaskPagePresented: Bool = false
+    @State private var isFilterPagePresented: Bool = false
+    @State private var isProfilePresented: Bool = false
+    @State private var isNewTaskPagePresented: Bool = false
     
     // MARK: - Setups
     var body: some View {
@@ -80,20 +69,11 @@ struct MainPageView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        addGroup
+                        AddTaskGroupButtonsView(isAddTaskClicked: $isNewTaskPagePresented)
                             .padding(.bottom, Grid.stripe)
                             .padding(.trailing, Grid.stripe)
-                            .onTapGesture {
-                                isAddTaskPopupPresented = true
-                                print(isAddTaskPopupPresented)
-                            }
                     }
                     
-                }
-                if isAddTaskPopupPresented {
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width: 100,height: 100)
                 }
             }
         }
