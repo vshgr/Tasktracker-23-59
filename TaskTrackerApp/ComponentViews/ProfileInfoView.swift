@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ProfileInfoView: View {
+    
     // MARK: - Constants
     enum Constants {
         static let picWH: CGFloat = 75
@@ -15,14 +17,16 @@ struct ProfileInfoView: View {
     
     // MARK: - Properties
     private let user = User()
+    @ObservedObject var viewModel = AppViewModel()
+    
     
     // MARK: - View
     var body: some View {
         HStack(spacing: CommonConstants.contentStackSpacing) {
             VStack(alignment: .leading) {
-                Text(user.name)
+                Text(viewModel.getUser()?.name ?? "")
                     .font(.dl.ralewayBold(20))
-                Text("@\(user.username)")
+                Text("@\(viewModel.getUser()?.username ?? "")")
                     .font(.system(size: 14))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -32,12 +36,16 @@ struct ProfileInfoView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Constants.picWH, height: Constants.picWH)
         }
+        .onAppear() {
+            self.viewModel.fetchData()
+        }
     }
 }
 
 struct ProfileInfoView_Previews: PreviewProvider {
+    static let viewModel = AppViewModel()
+    
     static var previews: some View {
         ProfileInfoView()
     }
 }
-

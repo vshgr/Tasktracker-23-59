@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct CreateAccountView: View {
     // MARK: - Fields
@@ -15,6 +17,8 @@ struct CreateAccountView: View {
     @State var navigate: Bool = false
     @State var showAlert: Bool = false
     @State var errorMessage: String = ""
+    
+    @ObservedObject var viewModel = AppViewModel()
     
     // MARK: - Setups
     var body: some View {
@@ -28,14 +32,17 @@ struct CreateAccountView: View {
                 VStack(spacing: CommonConstants.contentStackSpacing) {
                     InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .numberPad, inputType: .normal)
                     InputView(title: "Username", text: $usernameField, hint: "enter username...", keyboardType: .numberPad, inputType: .username)
-                    InputView(title: "Email", text: $emailField, hint: "example@email.com", keyboardType: .numberPad, inputType: .normal).disabled(true)
+                    InputView(title: "Email", text: $emailField, hint: "\(viewModel.getUser()?.email ?? "test@gmail.com")", keyboardType: .numberPad, inputType: .normal).disabled(true)
                 }
                 .padding(.horizontal, Grid.stripe)
-                .padding(.top, CommonConstants.topSpace)
+                .onAppear() {
+                    viewModel.fetchData()
+                }
                 
                 Spacer()
                 ButtonView(title: "Create account") {
                     createButtonPressed()
+                    viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField)
                 }
                 .padding(.bottom, Grid.stripe * 2)
                 .padding(.horizontal, Grid.stripe * 2)
@@ -75,7 +82,6 @@ struct CreateAccountView: View {
             navigate = true
         }
     }
-    
 }
 
 struct CreateAccountView_Previews: PreviewProvider {

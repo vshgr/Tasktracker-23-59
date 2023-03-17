@@ -26,13 +26,44 @@ enum FBError: Error, Identifiable {
 }
 
 class AppViewModel: ObservableObject {
-    
+    // MARK: - Fields
+    @Published var users = [User]()
     let auth = Auth.auth()
+    let db = Firestore.firestore()
     @Published var errorMessage: String?
     
+    // MARK: - Getter
     var signedIn: Bool {
         return auth.currentUser != nil
     }
+    
+    // MARK: - Actions
+    func fetchData() {
+        db.collection("users").addSnapshotListener { (querySnapshot, error) in
+            guard let users = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.users = users.map { queryDocumentSnapshot -> User in
+                let data = queryDocumentSnapshot.data()
+                let name = data["name"] as? String ?? ""
+                let username = data["username"] as? String ?? ""
+                let email = data["email"] as? String ?? ""
+                return User(name: name, username: username, email: email, profilePicUrl: "none")
+            }
+        }
+    }
+    
+    func getUser() -> User? {
+        for user in users {
+            if user.email == auth.currentUser?.email {
+                return user
+            }
+        }
+        return nil
+    }
+    
     
     func signIn (email: String, password: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
         auth.signIn(withEmail: email, password: password) { result, error in
@@ -60,5 +91,28 @@ class AppViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func insertNewUser(email: String, password: String) {
+        db.collection("users").document(email).setData([
+            "email": email,
+            "name": "",
+            "password": password,
+            "username": ""
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func insertUserInfo(email: String, username: String, name: String) {
+        let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
+        docRef.updateData([
+            "username": username,
+            "name": name
+        ])
     }
 }
