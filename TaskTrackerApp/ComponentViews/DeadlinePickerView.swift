@@ -6,7 +6,8 @@ enum Types {
 }
 
 struct DatePickerTextField: View {
-    @State private var deadline = Date()
+    @Binding var deadline: Date
+    
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -55,7 +56,6 @@ struct DatePickerTextField: View {
                             })
                     }
                 }
-                .padding(.top, 2)
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(.black)
@@ -64,8 +64,8 @@ struct DatePickerTextField: View {
     }
 }
 
-struct DL: PreviewProvider {
-    static var previews: some View {
-        DatePickerTextField(title: "Deadline date", type: .time, text: "select")
-    }
-}
+//struct DL: PreviewProvider {
+//    static var previews: some View {
+//        DatePickerTextField(title: "Deadline date", type: .time, text: "select")
+//    }
+//}

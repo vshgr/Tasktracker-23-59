@@ -49,6 +49,7 @@
 		48F7B2DE29C4BCDD00840E4B /* TaskOwnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */; };
 		48F7B2E029C4C51400840E4B /* NewTaskPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */; };
 		48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */; };
+		48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOwnerView.swift; sourceTree = "<group>"; };
 		48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageView.swift; sourceTree = "<group>"; };
 		48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinePickerView.swift; sourceTree = "<group>"; };
+		48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */,
 				48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */,
 				48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */,
+				48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				488EC81529BB84E000BCFD52 /* Font+.swift in Sources */,
 				488EC80229BB7E9F00BCFD52 /* WelcomeView.swift in Sources */,
 				48F7B2DC29C4BA0800840E4B /* TaskPageView.swift in Sources */,
+				48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */,
 				488EC81229BB84AA00BCFD52 /* Color+.swift in Sources */,
 				488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */,
 				488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */,
