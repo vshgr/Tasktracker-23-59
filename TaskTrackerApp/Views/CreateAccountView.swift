@@ -20,8 +20,10 @@ struct CreateAccountView: View {
     var body: some View {
         NavigationStack{
             VStack(spacing: CommonConstants.contentStackSpacing) {
-                ProfileView()
-                    .padding(.top, CommonConstants.topSpace)
+                // TODO: убрать, когда добавим фотки
+
+//                ProfileView()
+//                    .padding(.top, CommonConstants.topSpace)
                 
                 VStack(spacing: CommonConstants.contentStackSpacing) {
                     InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .numberPad, inputType: .normal)
@@ -29,6 +31,7 @@ struct CreateAccountView: View {
                     InputView(title: "Email", text: $emailField, hint: "example@email.com", keyboardType: .numberPad, inputType: .normal).disabled(true)
                 }
                 .padding(.horizontal, Grid.stripe)
+                .padding(.top, CommonConstants.topSpace)
                 
                 Spacer()
                 ButtonView(title: "Create account") {

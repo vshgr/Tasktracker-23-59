@@ -11,7 +11,7 @@ enum InputType {
     case email
     case normal
     case username
-    case date
+    case deadline
     case password
 }
 
@@ -47,15 +47,15 @@ struct InputView: View {
                         .keyboardType(keyboardType)
                         .textContentType(.emailAddress)
                         .autocapitalization(.none)
-                } else if inputType == .date {
-                    DatePicker(hint, selection: .constant(Date()), displayedComponents: [.hourAndMinute])
-                        .datePickerStyle(WheelDatePickerStyle())
+                } else if inputType == .deadline {
+                    DatePicker(hint, selection: .constant(Date()), displayedComponents: [.date, .hourAndMinute])
+                        .datePickerStyle(GraphicalDatePickerStyle())
                 } else if inputType == .password {
                     SecureField(hint, text: $text)
                         .foregroundColor(.black)
                         .keyboardType(keyboardType)
                         .autocapitalization(.none)
-                }
+                } 
                 Rectangle()
                     .frame(height: 1)
                     .foregroundColor(.black)

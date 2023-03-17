@@ -8,15 +8,36 @@
 import SwiftUI
 
 struct MyProfileView: View {
+    private enum Constants {
+        static let photo: Image = Image("dog")
+        static let photoWidth: CGFloat = 146
+    }
+    
     @EnvironmentObject var viewModel: AppViewModel
     @State private var isSignedOut = false
+    @State private var name = "Yana Barbashina"
+    @State private var username = "@yana_wishnya"
+    private let user = User()
+    
+    private var photoArea: some View {
+        Image(user.profilePicUrl)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: Constants.photoWidth, height: Constants.photoWidth)
+    }
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: CommonConstants.contentStackSpacing) {
-                ProfileView()
-                    .padding(.top, CommonConstants.topSpace)
-                
+            photoArea
+                .padding(.top, CommonConstants.topSpace)
+            VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
+                Text(name)
+                    .padding(.top, CommonConstants.contentStackSpacing)
+                    .padding(.leading, Grid.stripe)
+                    .font(.dl.mainFont())
+                Text(username)
+                    .padding(.leading, Grid.stripe)
+                    .font(.dl.ralewayRegular())
                 Spacer()
                 ButtonView(title: "Log out") {
                     isSignedOut = true

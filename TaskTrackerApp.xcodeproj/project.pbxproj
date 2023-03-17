@@ -45,6 +45,10 @@
 		48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D429C3B13D00840E4B /* MyProfileView.swift */; };
 		48F7B2D729C3B86800840E4B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D629C3B86800840E4B /* RegisterView.swift */; };
 		48F7B2DA29C3CA7B00840E4B /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */; };
+		48F7B2DC29C4BA0800840E4B /* TaskPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DB29C4BA0800840E4B /* TaskPageView.swift */; };
+		48F7B2DE29C4BCDD00840E4B /* TaskOwnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */; };
+		48F7B2E029C4C51400840E4B /* NewTaskPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */; };
+		48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,10 @@
 		48F7B2D429C3B13D00840E4B /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		48F7B2D629C3B86800840E4B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		48F7B2DB29C4BA0800840E4B /* TaskPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageView.swift; sourceTree = "<group>"; };
+		48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOwnerView.swift; sourceTree = "<group>"; };
+		48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageView.swift; sourceTree = "<group>"; };
+		48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +181,8 @@
 				48F7B2CA29BC880B00840E4B /* FeedView.swift */,
 				48F7B2CC29BC881900840E4B /* FriendsView.swift */,
 				48F7B2D429C3B13D00840E4B /* MyProfileView.swift */,
+				48F7B2DB29C4BA0800840E4B /* TaskPageView.swift */,
+				48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +209,8 @@
 				488EC84C29BBC23E00BCFD52 /* FriendHeaderView.swift */,
 				48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */,
 				48F7B2D029BC922000840E4B /* AddTaskGroupButtonsView.swift */,
+				48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */,
+				48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -315,10 +327,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F7B2E029C4C51400840E4B /* NewTaskPageView.swift in Sources */,
 				48F7B2DA29C3CA7B00840E4B /* FirebaseAuth.swift in Sources */,
 				48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */,
 				488EC81529BB84E000BCFD52 /* Font+.swift in Sources */,
 				488EC80229BB7E9F00BCFD52 /* WelcomeView.swift in Sources */,
+				48F7B2DC29C4BA0800840E4B /* TaskPageView.swift in Sources */,
 				488EC81229BB84AA00BCFD52 /* Color+.swift in Sources */,
 				488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */,
 				488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */,
@@ -327,11 +341,13 @@
 				488EC84029BBBC8400BCFD52 /* User.swift in Sources */,
 				48F7B2D729C3B86800840E4B /* RegisterView.swift in Sources */,
 				48F7B2CD29BC881900840E4B /* FriendsView.swift in Sources */,
+				48F7B2DE29C4BCDD00840E4B /* TaskOwnerView.swift in Sources */,
 				488EC83729BBA2E300BCFD52 /* CreateAccountView.swift in Sources */,
 				488EC83329BB926E00BCFD52 /* InputView.swift in Sources */,
 				488EC80029BB7E9F00BCFD52 /* SwiftUITestApp.swift in Sources */,
 				488EC84729BBBDA300BCFD52 /* TaskView.swift in Sources */,
 				48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */,
+				48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */,
 				488EC84D29BBC23E00BCFD52 /* FriendHeaderView.swift in Sources */,
 				488EC84429BBBD6A00BCFD52 /* MainPageView.swift in Sources */,
 				488EC80E29BB842300BCFD52 /* ButtonView.swift in Sources */,

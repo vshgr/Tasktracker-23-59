@@ -25,7 +25,6 @@ struct TaskView: View {
     private let selfTask: Bool
     private let width: CGFloat = 13
     private var dateView: BubbleView
-    private var taskClicked: (() -> Void)?
     
     // MARK: - Init
     
@@ -53,19 +52,15 @@ struct TaskView: View {
                     .lineLimit(3)
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
                     dateView
-                    Text(task.groups.joined(separator: Constants.separator))
-                        .font(CommonConstants.mainLabelFont)
-                        .foregroundColor(Color.dl.hintCol())
-                        .fixedSize(horizontal: false, vertical: true)
+                    // TODO: вернуть, когда появятся группы
+//                    Text(task.groups.joined(separator: Constants.separator))
+//                        .font(CommonConstants.mainLabelFont)
+//                        .foregroundColor(Color.dl.hintCol())
+//                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             .padding(.all, CommonConstants.smallContentSpacing)
-            .padding(.trailing, 10)
-//            .frame(maxWidth: .infinity)
             .background(Constants.taskColor)
-            .onTapGesture {
-                taskClicked?()
-            }
             .cornerRadius(10)
             VStack(spacing: CommonConstants.contentStackSpacing) {
                 Button(action: setDone) {
@@ -91,20 +86,6 @@ struct TaskView: View {
         withAnimation(.easeInOut(duration: 0.5)) {
             isDone.toggle()
         }
-    }
-    
-    // MARK: - Getters
-    
-    public func getTitle() -> String {
-        return task.name
-    }
-    
-    public func getDesc() -> String {
-        return task.description
-    }
-    
-    public func getDate() -> String {
-        return dateView.getText()
     }
 }
 

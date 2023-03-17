@@ -22,14 +22,18 @@ struct MainPageView: View {
     @State private var isTaskPagePresented = false
     @State private var isFilterPagePresented = false
     @State private var isProfilePresented = false
+    private var addGroup = AddTaskGroupButtonsView()
     
+    func taskClicked () {
+        
+    }
     // MARK: - Setups
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.white.edgesIgnoringSafeArea(.all)
                 
-                VStack (alignment: .leading){
+                VStack (alignment: .leading) {
                     ProfileInfoView()
                         .padding(.top, CommonConstants.topSpace)
                         .padding(.horizontal, Grid.stripe)
@@ -56,12 +60,10 @@ struct MainPageView: View {
                     ScrollView (showsIndicators: false){
                         VStack(spacing: CommonConstants.contentStackSpacing) {
                             ForEach(0..<10) { index in
-                                Button(action: {
-                                    isTaskPagePresented = true
-                                }, label: {
-                                    TaskView(isSelfTask: Bool.random())
-                                })
-                                .buttonStyle(PlainButtonStyle())
+                                TaskView(isSelfTask: Bool.random())
+                                    .onTapGesture {
+                                        isTaskPagePresented = true
+                                    }
                             }
                         }
                     }
@@ -72,9 +74,7 @@ struct MainPageView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button(action: {}, label: {
-                            AddTaskGroupButtonsView()
-                        })
+                        addGroup
                         .padding(.bottom, Grid.stripe)
                         .padding(.trailing, Grid.stripe)
                         .onTapGesture {
@@ -90,24 +90,20 @@ struct MainPageView: View {
                         .frame(width: 100,height: 100)
                 }
             }
-            
-            //        .fullScreenCover(isPresented: $isAddTaskPopupPresented, content: {
-            //            NewTaskFirstPage()
-            //        })
-            //        .fullScreenCover(isPresented: $isTaskPagePresented, content: {
-            //            TaskPage()
-            //        })
-            //        .fullScreenCover(isPresented: $isFilterPagePresented, content: {
-            //            FilterPage()
-            //        })
+            .navigationDestination(
+                isPresented: $isProfilePresented) {
+                    MyProfileView()
+                    Text("")
+                        .hidden()
+                }
+                .navigationDestination(
+                    isPresented: $isTaskPagePresented) {
+                        TaskPageView()
+                        Text("")
+                            .hidden()
+                    }
+                    .navigationBarHidden(true)
         }
-        .navigationDestination(
-            isPresented: $isProfilePresented) {
-                MyProfileView()
-                Text("")
-                    .hidden()
-            }
-        .navigationBarHidden(true)
     }
 }
 
