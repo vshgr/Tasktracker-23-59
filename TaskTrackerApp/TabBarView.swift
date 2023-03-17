@@ -15,26 +15,29 @@ struct CustomTabView: View {
         static let friends = Image("friends")
     }
     
+    @State private var selection = 2
+    
     // MARK: - Views
     var body: some View {
-        TabView {
+        TabView (selection: $selection) {
             FeedView()
                 .tabItem {
                     Constants.feed.renderingMode(.template)
                     Text("Feed")
-                }
+                }.tag(1)
             
             MainPageView()
                 .tabItem {
                     Constants.main.renderingMode(.template)
                     Text("Main")
-                }
+                }.tag(2)
             
             FriendsView()
                 .tabItem {
                     Constants.friends.renderingMode(.template)
                     Text("Friends")
                 }
+                .tag(3)
                 .badge(3)
         }
         .onAppear() {
