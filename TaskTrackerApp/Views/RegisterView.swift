@@ -25,7 +25,7 @@ struct RegisterView: View {
             switch result {
             case (.success(_)) :
                 navigate = true
-                viewModel.insertNewUser(email: email, password: password)
+                viewModel.insertNewUser(email: email)
             case(.failure(let error)):
                 viewModel.errorMessage = error.errorMessage
                 errorMessage = viewModel.errorMessage ?? ""

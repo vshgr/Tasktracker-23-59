@@ -1,27 +1,8 @@
 import SwiftUI
 
-enum Types {
-    case date
-    case time
-}
-
 struct DatePickerTextField: View {
     @Binding var deadline: Date
-    
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-    
-    private let timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }()
-    
     var title: String
-    var type: Types
     @State var text: String
     @State private var isDatePickerPresented = false
     
@@ -36,25 +17,14 @@ struct DatePickerTextField: View {
                     isDatePickerPresented = true
                 }
                 .sheet(isPresented: $isDatePickerPresented) {
-                    if type == .date {
-                        DatePicker("", selection: $deadline, displayedComponents: .date)
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                            .labelsHidden()
-                            .presentationDetents([.medium, .large])
-                            .presentationDragIndicator(.hidden)
-                            .onChange(of: deadline, perform: { newValue in
-                                text = dateFormatter.string(from: deadline)
-                            })
-                    } else {
-                        DatePicker("", selection: $deadline, displayedComponents:  .hourAndMinute)
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                            .presentationDetents([.medium, .large])
-                            .presentationDragIndicator(.hidden)
-                            .onChange(of: deadline, perform: { newValue in
-                                text = timeFormatter.string(from: deadline)
-                            })
-                    }
+                    DatePicker("", selection: $deadline, displayedComponents: [.date, .hourAndMinute])
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .labelsHidden()
+                        .presentationDetents([.medium, .large])
+                        .presentationDragIndicator(.hidden)
+                        .onChange(of: deadline, perform: { newValue in
+                            text = deadline.formatted()
+                        })
                 }
             Rectangle()
                 .frame(height: 1)

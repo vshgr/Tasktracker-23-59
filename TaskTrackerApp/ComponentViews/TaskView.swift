@@ -30,7 +30,7 @@ struct TaskView: View {
     
     init(isSelfTask: Bool = true) {
         selfTask = isSelfTask
-        dateView = BubbleView(bubbleText: task.deadline, isInteractable: false)
+        dateView = BubbleView(bubbleText: task.deadlineDate.formatted(), isInteractable: false)
     }
     
     // MARK: - Views
@@ -42,9 +42,9 @@ struct TaskView: View {
                     FriendHeaderView()
                 }
                 if selfTask == true {
-                    Text(task.permission.rawValue)
-                        .font(.dl.ralewayMedium(12))
-                        .foregroundColor(Color.dl.hintCol())
+//                    Text(task.permission.rawValue)
+//                        .font(.dl.ralewayMedium(12))
+//                        .foregroundColor(Color.dl.hintCol())
                 }
                 Text(task.name)
                     .font(.dl.ralewayBold(14))

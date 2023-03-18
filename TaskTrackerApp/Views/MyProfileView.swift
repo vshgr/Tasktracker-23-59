@@ -13,11 +13,11 @@ struct MyProfileView: View {
         static let photoWidth: CGFloat = 146
     }
     
-    @EnvironmentObject var viewModel: AppViewModel
     @State private var isSignedOut = false
     @State private var name = "Yana Barbashina"
     @State private var username = "@yana_wishnya"
     private let user = User()
+    @ObservedObject var viewModel = AppViewModel()
     
     private var photoArea: some View {
         Image(user.profilePicUrl)
@@ -31,13 +31,15 @@ struct MyProfileView: View {
             photoArea
                 .padding(.top, CommonConstants.topSpace)
             VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                Text(name)
-                    .padding(.top, CommonConstants.contentStackSpacing)
-                    .padding(.leading, Grid.stripe)
-                    .font(.dl.mainFont())
-                Text(username)
-                    .padding(.leading, Grid.stripe)
-                    .font(.dl.ralewayRegular())
+                VStack(alignment: .leading) {
+                    Text(viewModel.getUser()?.name ?? "")
+                        .font(.dl.ralewayBold(20))
+                    Text("@\(viewModel.getUser()?.username ?? "")")
+                        .font(.system(size: 14))
+                }
+                .padding(.horizontal, Grid.stripe)
+                .padding(.top, CommonConstants.smallContentSpacing)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
                 ButtonView(title: "Log out") {
                     isSignedOut = true
@@ -53,6 +55,9 @@ struct MyProfileView: View {
                 
             }
         }
+        .onAppear(perform: {
+            viewModel.fetchData()
+        })
         .navigationDestination(isPresented: $isSignedOut) {
             WelcomeView()
         }

@@ -50,7 +50,8 @@ class AppViewModel: ObservableObject {
                 let name = data["name"] as? String ?? ""
                 let username = data["username"] as? String ?? ""
                 let email = data["email"] as? String ?? ""
-                return User(name: name, username: username, email: email, profilePicUrl: "none")
+                let tasks = data["tasks"] as? [Task] ?? []
+                return User(name: name, username: username, email: email, profilePicUrl: "none", tasks: tasks)
             }
         }
     }
@@ -93,12 +94,12 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func insertNewUser(email: String, password: String) {
+    func insertNewUser(email: String) {
         db.collection("users").document(email).setData([
             "email": email,
             "name": "",
-            "password": password,
-            "username": ""
+            "username": "",
+            "tasks": []
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

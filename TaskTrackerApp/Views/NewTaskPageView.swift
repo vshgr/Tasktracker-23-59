@@ -11,15 +11,13 @@ struct NewTaskPageView: View {
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var deadlineDate: Date = Date()
-    @State private var deadlineTime: Date = Date()
     
     var body: some View {
         NavigationStack {
             VStack (spacing: CommonConstants.contentStackSpacing) {
                 InputView(title: "Title", text: $title, hint: "enter title...", keyboardType: .default, inputType: .normal)
                 TaskDescriptionView(text: $description)
-                DatePickerTextField(deadline: $deadlineDate, title: "Deadline date", type: .date, text: "select date...")
-                DatePickerTextField(deadline: $deadlineTime, title: "Deadline time", type: .time, text: "select time...")
+                DatePickerTextField(deadline: $deadlineDate, title: "Deadline date", text: "select date...")
             }
             .padding(.top, CommonConstants.topSpace)
             .padding(.horizontal, Grid.stripe)

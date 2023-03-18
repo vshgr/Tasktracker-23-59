@@ -29,7 +29,7 @@ struct TaskPageView: View {
                 HStack {
                     friend
                     Spacer()
-                    Text(task.deadline)
+                    Text(task.deadlineDate.formatted())
                         .font(.system(size: 12))
                 }
                 //            groupsScroll
