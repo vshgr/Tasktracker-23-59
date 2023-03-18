@@ -119,13 +119,6 @@ class AppViewModel: ObservableObject {
     }
     
     func insertTask(email: String, task: Task) {
-//        let docRef = db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks")
-//        var newTasks = getUserTasks()
-//        newTasks.append(task)
-//        docRef.updateData([
-//            "tasks": newTasks
-//        ])
-        
         var ref: DocumentReference? = nil
         ref = db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").addDocument(data: [
             "name": task.name,
@@ -148,18 +141,6 @@ class AppViewModel: ObservableObject {
         }
         return []
     }
-    
-//    func getDBTasks() {
-//        db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    document.data()
-//                }
-//            }
-//        }
-//    }
     
     func getTasks() -> [Task] {
         db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").addSnapshotListener { (querySnapshot, error) in
