@@ -22,6 +22,7 @@ struct MainPageView: View {
     @State private var isFilterPagePresented: Bool = false
     @State private var isProfilePresented: Bool = false
     @State private var isNewTaskPagePresented: Bool = false
+    @ObservedObject var viewModel = AppViewModel()
     
     // MARK: - Setups
     var body: some View {
@@ -54,12 +55,20 @@ struct MainPageView: View {
                     
                     ScrollView (showsIndicators: false){
                         VStack(spacing: CommonConstants.contentStackSpacing) {
-                            ForEach(0..<10) { index in
-                                TaskView(isSelfTask: Bool.random())
-                                    .onTapGesture {
-                                        isTaskPagePresented = true
-                                    }
+                            if viewModel.getUserTasks().count != 0 {
+                                ForEach(viewModel.getUserTasks(), id: \.name) { task in
+                                    TaskView(isSelfTask: true, taskData: task)
+                                }
+                            } else {
+                                Text("no tasks :(")
+                                    .foregroundColor(.dl.hintCol())
                             }
+//                            ForEach(0..<10) { index in
+//                                TaskView(isSelfTask: Bool.random())
+//                                    .onTapGesture {
+//                                        isTaskPagePresented = true
+//                                    }
+//                            }
                         }
                     }
                     .padding(.top, CommonConstants.contentStackSpacing)

@@ -21,15 +21,16 @@ struct TaskView: View {
     // MARK: - Properties
     
     @State private var isDone = false
-    private let task: Task = Task()
+    private var task: Task = Task()
     private let selfTask: Bool
     private let width: CGFloat = 13
     private var dateView: BubbleView
     
     // MARK: - Init
     
-    init(isSelfTask: Bool = true) {
+    init(isSelfTask: Bool = true, taskData: Task) {
         selfTask = isSelfTask
+        task = taskData
         dateView = BubbleView(bubbleText: task.deadlineDate.formatted(), isInteractable: false)
     }
     
@@ -89,8 +90,8 @@ struct TaskView: View {
     }
 }
 
-struct T: PreviewProvider {
-    static var previews: some View {
-        TaskView(isSelfTask: false)
-    }
-}
+//struct T: PreviewProvider {
+//    static var previews: some View {
+//        TaskView(isSelfTask: false)
+//    }
+//}

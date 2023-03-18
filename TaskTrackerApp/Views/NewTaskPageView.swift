@@ -11,6 +11,7 @@ struct NewTaskPageView: View {
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var deadlineDate: Date = Date()
+    @ObservedObject var viewModel = AppViewModel()
     
     var body: some View {
         NavigationStack {
@@ -22,11 +23,18 @@ struct NewTaskPageView: View {
             .padding(.top, CommonConstants.topSpace)
             .padding(.horizontal, Grid.stripe)
             Spacer()
-            ButtonView(title: "Create")
+            ButtonView(title: "Create") {
+                print("im here")
+                viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
+            }
+            .onAppear(perform: {
+                viewModel.fetchData()
+            })
                 .padding(.bottom, Grid.stripe * 2)
                 .padding(.horizontal, Grid.stripe * 2)
             .navigationBarTitle("Create task")
-        } 
+        }
+        
     }
 }
 
