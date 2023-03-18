@@ -116,4 +116,22 @@ class AppViewModel: ObservableObject {
             "name": name
         ])
     }
+    
+    func insertTask(email: String, task: Task) {
+        let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
+        var newTasks = getUserTasks()
+        newTasks.append(task)
+        docRef.updateData([
+            "tasks": newTasks
+        ])
+    }
+    
+    func getUserTasks() -> [Task] {
+        for user in users {
+            if user.email == auth.currentUser?.email {
+                return user.tasks
+            }
+        }
+        return []
+    }
 }
