@@ -21,34 +21,32 @@ struct TaskPageView: View {
     
     // MARK: - UI Components
     private let friend = TaskOwnerView()
-//    private let groupsScroll = BubblesScrollView(type: .filled)
+    //    private let groupsScroll = BubblesScrollView(type: .filled)
     
     // MARK: - View Lifecycle
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                HStack {
-                    friend
-                    Spacer()
-                    Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
-                        .font(.system(size: 12))
-                }
-                //            groupsScroll
-                //                .frame(height: Constants.scrollHeight)
-                Text(viewModel.getTask(id: taskId).name)
-                    .font(.dl.ralewayBold())
-                ScrollView {
-                    Text(viewModel.getTask(id: taskId).description)
-                        .lineSpacing(Constants.linesSpacing)
-                        .font(.dl.ralewayMedium())
-                }
+        VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
+            HStack {
+                friend
+                Spacer()
+                Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
+                    .font(.system(size: 12))
             }
-            .padding(.all, Grid.stripe)
-            .navigationBarTitle("Task")
-            .navigationBarItems(trailing: barButtonView)
-            .onAppear() {
-                self.viewModel.fetchData()
+            //            groupsScroll
+            //                .frame(height: Constants.scrollHeight)
+            Text(viewModel.getTask(id: taskId).name)
+                .font(.dl.ralewayBold())
+            ScrollView {
+                Text(viewModel.getTask(id: taskId).description)
+                    .lineSpacing(Constants.linesSpacing)
+                    .font(.dl.ralewayMedium())
             }
+        }
+        .padding(.all, Grid.stripe)
+        .navigationBarTitle("Task")
+        .navigationBarItems(trailing: barButtonView)
+        .onAppear() {
+            self.viewModel.fetchData()
         }
     }
     

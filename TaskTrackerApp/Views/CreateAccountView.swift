@@ -22,42 +22,40 @@ struct CreateAccountView: View {
     
     // MARK: - Setups
     var body: some View {
-        NavigationStack{
+        VStack(spacing: CommonConstants.contentStackSpacing) {
+            // TODO: убрать, когда добавим фотки
+            
+            //                ProfileView()
+            //                    .padding(.top, CommonConstants.topSpace)
+            
             VStack(spacing: CommonConstants.contentStackSpacing) {
-                // TODO: убрать, когда добавим фотки
-
-//                ProfileView()
-//                    .padding(.top, CommonConstants.topSpace)
-                
-                VStack(spacing: CommonConstants.contentStackSpacing) {
-                    InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .numberPad, inputType: .normal)
-                    InputView(title: "Username", text: $usernameField, hint: "enter username...", keyboardType: .numberPad, inputType: .username)
-                    InputView(title: "Email", text: $emailField, hint: "\(viewModel.getUser()?.email ?? "test@gmail.com")", keyboardType: .numberPad, inputType: .normal).disabled(true)
-                }
-                .padding(.horizontal, Grid.stripe)
-                .onAppear() {
-                    viewModel.fetchData()
-                }
-                
-                Spacer()
-                ButtonView(title: "Create account") {
-                    createButtonPressed()
-                    viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField)
-                }
-                .padding(.bottom, Grid.stripe * 2)
-                .padding(.horizontal, Grid.stripe * 2)
-                
+                InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .numberPad, inputType: .normal)
+                InputView(title: "Username", text: $usernameField, hint: "enter username...", keyboardType: .numberPad, inputType: .username)
+                InputView(title: "Email", text: $emailField, hint: "\(viewModel.getUser()?.email ?? "test@gmail.com")", keyboardType: .numberPad, inputType: .normal).disabled(true)
             }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+            .padding(.horizontal, Grid.stripe)
+            .onAppear() {
+                viewModel.fetchData()
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("Create account")
-            .navigationDestination(
-                isPresented: $navigate) {
-                    CustomTabView()
-                }
+            
+            Spacer()
+            ButtonView(title: "Create account") {
+                createButtonPressed()
+                viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField)
+            }
+            .padding(.bottom, Grid.stripe * 2)
+            .padding(.horizontal, Grid.stripe * 2)
+            
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle("Create account")
+        .navigationDestination(
+            isPresented: $navigate) {
+                CustomTabView()
+            }
     }
     
     // MARK: - Actions

@@ -33,26 +33,24 @@ struct RegisterView: View {
     }
     
     var content: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                Spacer()
-                InputView(title: "Email", text: $email, hint: "enter email...", keyboardType: .emailAddress, inputType: .email)
-                    .padding(.horizontal, Grid.stripe)
-                InputView(title: "Password", text: $password, hint: "enter password...", keyboardType: .default, inputType: .password)
-                    .padding(.horizontal, Grid.stripe)
-                Spacer()
-                ButtonView(title: "Sign up") {
-                    signUp(email: email, password: password)
+        VStack(spacing: 20) {
+            Spacer()
+            InputView(title: "Email", text: $email, hint: "enter email...", keyboardType: .emailAddress, inputType: .email)
+                .padding(.horizontal, Grid.stripe)
+            InputView(title: "Password", text: $password, hint: "enter password...", keyboardType: .default, inputType: .password)
+                .padding(.horizontal, Grid.stripe)
+            Spacer()
+            ButtonView(title: "Sign up") {
+                signUp(email: email, password: password)
+            }
+            .navigationDestination(
+                isPresented: $navigate) {
+                    CreateAccountView()
                 }
-                .navigationDestination(
-                    isPresented: $navigate) {
-                        CreateAccountView()
-                    }
                 .padding(.horizontal, Grid.stripe * 2)
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
     }
     

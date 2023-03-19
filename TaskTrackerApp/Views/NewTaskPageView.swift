@@ -14,28 +14,26 @@ struct NewTaskPageView: View {
     @ObservedObject var viewModel = AppViewModel()
     
     var body: some View {
-        NavigationStack {
-            VStack (spacing: CommonConstants.contentStackSpacing) {
-                InputView(title: "Title", text: $title, hint: "enter title...", keyboardType: .default, inputType: .normal)
-                TaskDescriptionView(text: $description)
-                DatePickerTextField(deadline: $deadlineDate, title: "Deadline date", text: "select date...")
-            }
-            .padding(.top, CommonConstants.topSpace)
-            .padding(.horizontal, Grid.stripe)
-            Spacer()
-            ButtonView(title: "Create") {
-                print("im here")
-                viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
-            }
-                .padding(.bottom, Grid.stripe * 2)
-                .padding(.horizontal, Grid.stripe * 2)
-            .navigationBarTitle("Create task")
+        VStack (spacing: CommonConstants.contentStackSpacing) {
+            InputView(title: "Title", text: $title, hint: "enter title...", keyboardType: .default, inputType: .normal)
+            TaskDescriptionView(text: $description)
+            DatePickerTextField(deadline: $deadlineDate, title: "Deadline date", text: "select date...")
         }
+        .padding(.top, CommonConstants.topSpace)
+        .padding(.horizontal, Grid.stripe)
+        Spacer()
+        ButtonView(title: "Create") {
+            print("im here")
+            viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
+        }
+        .padding(.bottom, Grid.stripe * 2)
+        .padding(.horizontal, Grid.stripe * 2)
+        .navigationBarTitle("Create task")
         .onAppear() {
             self.viewModel.fetchData()
         }
-        
     }
+        
 }
 
 struct NTP: PreviewProvider {

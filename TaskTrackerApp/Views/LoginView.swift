@@ -34,30 +34,27 @@ struct LoginView: View {
     }
     
     var content: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                Spacer()
-                InputView(title: "Email", text: $email, hint: "enter email...", keyboardType: .emailAddress, inputType: .email)
-                    .padding(.horizontal, Grid.stripe)
-                InputView(title: "Password", text: $password, hint: "enter password...", keyboardType: .default, inputType: .password)
-                    .padding(.horizontal, Grid.stripe)
-                Spacer()
-                ButtonView(title: "Log In") {
-                    logIn(email: email, password: password)
+        VStack(spacing: 20) {
+            Spacer()
+            InputView(title: "Email", text: $email, hint: "enter email...", keyboardType: .emailAddress, inputType: .email)
+                .padding(.horizontal, Grid.stripe)
+            InputView(title: "Password", text: $password, hint: "enter password...", keyboardType: .default, inputType: .password)
+                .padding(.horizontal, Grid.stripe)
+            Spacer()
+            ButtonView(title: "Log In") {
+                logIn(email: email, password: password)
+            }
+            .navigationDestination(
+                isPresented: $navigate) {
+                    CustomTabView()
                 }
-                .navigationDestination(
-                    isPresented: $navigate) {
-                        CustomTabView()
-                    }
                 .padding(.horizontal, Grid.stripe * 2)
                 .padding(.bottom, Grid.stripe * 2)
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
     }
-    
     
     var body: some View {
         if viewModel.signedIn {
