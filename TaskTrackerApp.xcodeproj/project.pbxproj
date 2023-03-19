@@ -52,6 +52,7 @@
 		48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */; };
 		48F7B2E629C7636E00840E4B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */; };
 		48F7B2E829C7A69D00840E4B /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */; };
+		48F7B2EA29C7AA0400840E4B /* FirestoreTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinePickerView.swift; sourceTree = "<group>"; };
 		48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDescriptionView.swift; sourceTree = "<group>"; };
 		48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */,
+				48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				488EC83729BBA2E300BCFD52 /* CreateAccountView.swift in Sources */,
 				488EC83329BB926E00BCFD52 /* InputView.swift in Sources */,
 				488EC80029BB7E9F00BCFD52 /* SwiftUITestApp.swift in Sources */,
+				48F7B2EA29C7AA0400840E4B /* FirestoreTasks.swift in Sources */,
 				488EC84729BBBDA300BCFD52 /* TaskView.swift in Sources */,
 				48F7B2D529C3B13D00840E4B /* MyProfileView.swift in Sources */,
 				48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */,

@@ -18,6 +18,8 @@ struct TaskPageView: View {
     // MARK: - Fields
     var taskId: String
     @ObservedObject private var viewModel = AppViewModel()
+    @State private var showAlert: Bool = false
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     // MARK: - UI Components
     private let friend = TaskOwnerView()
@@ -51,6 +53,20 @@ struct TaskPageView: View {
     private var barButtonView: some View {
         HStack (spacing: CommonConstants.smallContentSpacing) {
             Image(systemName: "trash.fill")
+                .onTapGesture {
+                    showAlert = true
+                }
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Are you sure you want to delete task?"),
+                        message: Text("There is no undo"),
+                        primaryButton: .destructive(Text("Delete")) {
+                            viewModel.deleteTask(id: taskId)
+                            presentationMode.wrappedValue.dismiss()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
             Image(systemName: "bell.fill")
         }
     }
