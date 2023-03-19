@@ -39,8 +39,6 @@ struct BubbleView: View {
             )
             .cornerRadius(100)
             .onTapGesture(perform: bubbleClicked)
-        
-        
     }
     
     var body: some View {

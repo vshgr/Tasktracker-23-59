@@ -45,17 +45,16 @@ struct LoginView: View {
                 ButtonView(title: "Log In") {
                     logIn(email: email, password: password)
                 }
-                
+                .navigationDestination(
+                    isPresented: $navigate) {
+                        CustomTabView()
+                    }
                 .padding(.horizontal, Grid.stripe * 2)
                 .padding(.bottom, Grid.stripe * 2)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
-            .navigationDestination(
-                isPresented: $navigate) {
-                    CustomTabView()
-                }
         }
     }
     
@@ -69,8 +68,8 @@ struct LoginView: View {
     }
 }
 
-struct EmailView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct EmailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}

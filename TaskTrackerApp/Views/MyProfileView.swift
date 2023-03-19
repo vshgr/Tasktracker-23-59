@@ -56,7 +56,7 @@ struct MyProfileView: View {
             }
         }
         .onAppear(perform: {
-            viewModel.fetchData()
+            self.viewModel.fetchData()
         })
         .navigationDestination(isPresented: $isSignedOut) {
             WelcomeView()

@@ -21,18 +21,10 @@ struct TaskView: View {
     // MARK: - Properties
     
     @State private var isDone = false
-    private var task: Task = Task()
-    private let selfTask: Bool
+    var taskID: String
+    var selfTask: Bool
+    @ObservedObject private var viewModel = AppViewModel()
     private let width: CGFloat = 13
-    private var dateView: BubbleView
-    
-    // MARK: - Init
-    
-    init(isSelfTask: Bool = true, taskData: Task) {
-        selfTask = isSelfTask
-        task = taskData
-        dateView = BubbleView(bubbleText: task.deadlineDate.formatted(), isInteractable: false)
-    }
     
     // MARK: - Views
     
@@ -48,12 +40,14 @@ struct TaskView: View {
 //                        .font(.dl.ralewayMedium(12))
 //                        .foregroundColor(Color.dl.hintCol())
                 }
-                Text(task.name)
+                Text(viewModel.getTask(id: taskID).name)
                     .font(.dl.ralewayBold(14))
                     .foregroundColor(Color.black)
                     .lineLimit(3)
+                    .multilineTextAlignment(.leading)
+                    
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    dateView
+                    BubbleView(bubbleText: viewModel.getTask(id: taskID).deadlineDate.formatted(), isInteractable: false)
                     // TODO: вернуть, когда появятся группы
 //                    Text(task.groups.joined(separator: Constants.separator))
 //                        .font(CommonConstants.mainLabelFont)
@@ -83,6 +77,9 @@ struct TaskView: View {
             }
             .padding(.leading, -25)
         }
+        .onAppear () {
+            self.viewModel.fetchData()
+        }
     }
     
     // MARK: - Actions
@@ -94,8 +91,8 @@ struct TaskView: View {
     }
 }
 
-struct T: PreviewProvider {
-    static var previews: some View {
-        TaskView(isSelfTask: false, taskData: Task(name: "123", description: "123", deadlineDate: Date()))
-    }
-}
+//struct T: PreviewProvider {
+//    static var previews: some View {
+//        TaskView(isSelfTask: false, taskData: Task(name: "123", description: "123", deadlineDate: Date()))
+//    }
+//}

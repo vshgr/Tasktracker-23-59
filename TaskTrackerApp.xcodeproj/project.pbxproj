@@ -50,6 +50,7 @@
 		48F7B2E029C4C51400840E4B /* NewTaskPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */; };
 		48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */; };
 		48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */; };
+		48F7B2E629C7636E00840E4B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F7B2E629C7636E00840E4B /* FirebaseFirestoreSwift in Frameworks */,
 				3CA9EB0D29C270E400E3377E /* FirebaseAnalyticsSwift in Frameworks */,
 				3CA9EB1229C2814400E3377E /* FirebaseFirestore in Frameworks */,
 				3CA9EB1029C2813900E3377E /* FirebaseAuth in Frameworks */,
@@ -267,6 +269,7 @@
 				3CA9EB0C29C270E400E3377E /* FirebaseAnalyticsSwift */,
 				3CA9EB0F29C2813900E3377E /* FirebaseAuth */,
 				3CA9EB1129C2814400E3377E /* FirebaseFirestore */,
+				48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */,
 			);
 			productName = SwiftUITest;
 			productReference = 488EC7FC29BB7E9F00BCFD52 /* TaskTrackerApp.app */;
@@ -594,6 +597,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3CA9EB0929C270E400E3377E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CA9EB0929C270E400E3377E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

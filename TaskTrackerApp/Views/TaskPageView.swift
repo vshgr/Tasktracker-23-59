@@ -16,7 +16,8 @@ struct TaskPageView: View {
     }
     
     // MARK: - Fields
-    private let task = Task()
+    var taskId: String
+    @ObservedObject private var viewModel = AppViewModel()
     
     // MARK: - UI Components
     private let friend = TaskOwnerView()
@@ -29,15 +30,15 @@ struct TaskPageView: View {
                 HStack {
                     friend
                     Spacer()
-                    Text(task.deadlineDate.formatted())
+                    Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
                         .font(.system(size: 12))
                 }
                 //            groupsScroll
                 //                .frame(height: Constants.scrollHeight)
-                Text(task.name)
+                Text(viewModel.getTask(id: taskId).name)
                     .font(.dl.ralewayBold())
                 ScrollView {
-                    Text(task.description)
+                    Text(viewModel.getTask(id: taskId).description)
                         .lineSpacing(Constants.linesSpacing)
                         .font(.dl.ralewayMedium())
                 }
@@ -45,6 +46,9 @@ struct TaskPageView: View {
             .padding(.all, Grid.stripe)
             .navigationBarTitle("Task")
             .navigationBarItems(trailing: barButtonView)
+            .onAppear() {
+                self.viewModel.fetchData()
+            }
         }
     }
     
@@ -56,8 +60,8 @@ struct TaskPageView: View {
     }
 }
 
-struct TP: PreviewProvider {
-    static var previews: some View {
-        TaskPageView()
-    }
-}
+//struct TP: PreviewProvider {
+//    static var previews: some View {
+//        TaskPageView()
+//    }
+//}

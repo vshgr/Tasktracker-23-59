@@ -31,6 +31,9 @@ struct NewTaskPageView: View {
                 .padding(.horizontal, Grid.stripe * 2)
             .navigationBarTitle("Create task")
         }
+        .onAppear() {
+            self.viewModel.fetchData()
+        }
         
     }
 }

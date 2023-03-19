@@ -23,6 +23,7 @@ struct MainPageView: View {
     @State private var isProfilePresented: Bool = false
     @State private var isNewTaskPagePresented: Bool = false
     @ObservedObject var viewModel = AppViewModel()
+    @State private var isTasksPresented: Bool = false
     
     // MARK: - Setups
     var body: some View {
@@ -30,7 +31,7 @@ struct MainPageView: View {
             ZStack {
                 Color.white.edgesIgnoringSafeArea(.all)
                 VStack (alignment: .leading) {
-                    ProfileInfoView()
+                    ProfileInfoView(name: viewModel.getUser()?.name ?? "", username: viewModel.getUser()?.username ?? "")
                         .padding(.top, CommonConstants.topSpace)
                         .padding(.horizontal, Grid.stripe)
                         .onTapGesture {
@@ -55,9 +56,11 @@ struct MainPageView: View {
                     
                     ScrollView (showsIndicators: false){
                         VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                            if viewModel.getUserTasks().count != 0 {
-                                ForEach(viewModel.getUserTasks(), id: \.name) { task in
-                                    TaskView(isSelfTask: true, taskData: task)
+                            if viewModel.tasks.count > 0 {
+                                ForEach(viewModel.tasks) { task in
+                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "")) {
+                                        TaskView(taskID: task.id ?? "", selfTask: true)
+                                    }
                                 }
                             } else {
                                 Text("no tasks :(")
@@ -88,14 +91,10 @@ struct MainPageView: View {
                 isPresented: $isNewTaskPagePresented) {
                     NewTaskPageView()
                 }
-                .navigationDestination(
-                    isPresented: $isTaskPagePresented) {
-                        TaskPageView()
-                    }
-                    .navigationBarHidden(true)
-                    .onAppear() {
-                        self.viewModel.fetchData()
-                    }
+                .navigationBarHidden(true)
+                .onAppear(perform: {
+                    self.viewModel.fetchData()
+                })
     }
 }
 

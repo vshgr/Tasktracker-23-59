@@ -10,7 +10,6 @@ struct User {
     var username: String
     var email: String
     var profilePicUrl: String
-    var tasks: [Task]
 }
 
 extension User {
@@ -19,6 +18,5 @@ extension User {
         username = "yana_wishnya"
         email = "yana_wishnya@hse.ru"
         profilePicUrl = "dog"
-        tasks = []
     }
 }

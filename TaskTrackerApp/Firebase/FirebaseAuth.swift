@@ -51,10 +51,10 @@ class AppViewModel: ObservableObject {
                 let name = data["name"] as? String ?? ""
                 let username = data["username"] as? String ?? ""
                 let email = data["email"] as? String ?? ""
-                let tasks = getTasks()
-                return User(name: name, username: username, email: email, profilePicUrl: "none", tasks: tasks)
+                return User(name: name, username: username, email: email, profilePicUrl: "none")
             }
         }
+        getTasks()
     }
     
     func getUser() -> User? {
@@ -100,7 +100,6 @@ class AppViewModel: ObservableObject {
             "email": email,
             "name": "",
             "username": "",
-            "tasks": []
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -133,16 +132,7 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func getUserTasks() -> [Task] {
-        for user in users {
-            if user.email == auth.currentUser?.email {
-                return user.tasks
-            }
-        }
-        return []
-    }
-    
-    func getTasks() -> [Task] {
+    func getTasks() {
         db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").addSnapshotListener { (querySnapshot, error) in
             guard let tasks = querySnapshot?.documents else {
                 print("No documents")
@@ -151,13 +141,23 @@ class AppViewModel: ObservableObject {
             
             self.tasks = tasks.map { queryDocumentSnapshot -> Task in
                 let data = queryDocumentSnapshot.data()
+                let id = queryDocumentSnapshot.documentID
                 let name = data["name"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
-                let deadlineDate = data["deadlineDate"] as? Date ?? Date.now
-                return Task(name: name, description: description, deadlineDate: deadlineDate)
+                let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
+                let date = deadlineDate.dateValue()
+                return Task(id: id, name: name, description: description, deadlineDate: date)
             }
         }
-        
-        return tasks
+    }
+    
+    func getTask (id: String) -> Task {
+        var ret = Task()
+        for task in tasks {
+            if task.id == id {
+                ret = task
+            }
+        }
+        return ret
     }
 }

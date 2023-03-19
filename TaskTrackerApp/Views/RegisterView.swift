@@ -15,8 +15,6 @@ struct RegisterView: View {
     @State private var showAlert: Bool = false
     @State private var errorMessage: String = ""
     @State var navigate: Bool = false
-    @State private var isLoginPresented = false
-    
     @EnvironmentObject var viewModel: AppViewModel
     
     // METHOD FOR STORING USER DATA
@@ -46,19 +44,15 @@ struct RegisterView: View {
                 ButtonView(title: "Sign up") {
                     signUp(email: email, password: password)
                 }
+                .navigationDestination(
+                    isPresented: $navigate) {
+                        CreateAccountView()
+                    }
                 .padding(.horizontal, Grid.stripe * 2)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
-            .navigationDestination(
-                isPresented: $isLoginPresented) {
-                    LoginView()
-                }
-                .navigationDestination(
-                    isPresented: $navigate) {
-                        CreateAccountView()
-                    }
         }
     }
     
@@ -68,8 +62,8 @@ struct RegisterView: View {
     }
 }
 
-struct RegView: PreviewProvider {
-    static var previews: some View {
-        RegisterView()
-    }
-}
+//struct RegView: PreviewProvider {
+//    static var previews: some View {
+//        RegisterView()
+//    }
+//}
