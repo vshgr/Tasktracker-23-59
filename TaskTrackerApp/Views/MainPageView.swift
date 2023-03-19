@@ -92,9 +92,6 @@ struct MainPageView: View {
                     NewTaskPageView()
                 }
                 .navigationBarHidden(true)
-                .onAppear(perform: {
-                    self.viewModel.fetchData()
-                })
     }
 }
 

@@ -33,7 +33,10 @@ class AppViewModel: ObservableObject {
     let db = Firestore.firestore()
     @Published var errorMessage: String?
     
-    // MARK: - Getter
+    init() {
+        fetchData()
+    }
+    
     var signedIn: Bool {
         return auth.currentUser != nil
     }

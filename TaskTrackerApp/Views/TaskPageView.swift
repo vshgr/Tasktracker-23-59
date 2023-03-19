@@ -45,9 +45,6 @@ struct TaskPageView: View {
         .padding(.all, Grid.stripe)
         .navigationBarTitle("Task")
         .navigationBarItems(trailing: barButtonView)
-        .onAppear() {
-            self.viewModel.fetchData()
-        }
     }
     
     private var barButtonView: some View {
