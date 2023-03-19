@@ -31,10 +31,9 @@ struct TaskView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                if selfTask == false {
+                if !selfTask {
                     FriendHeaderView()
-                }
-                if selfTask == true {
+                } else {
                     // TODO: вернуть, когда появятся пермишены
 //                    Text(task.permission.rawValue)
 //                        .font(.dl.ralewayMedium(12))
@@ -47,7 +46,9 @@ struct TaskView: View {
                     .multilineTextAlignment(.leading)
                     
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    BubbleView(bubbleText: viewModel.getTask(id: taskID).deadlineDate.formatted(), isInteractable: false)
+                    if viewModel.getTask(id: taskID).deadlineDate != Date(timeIntervalSince1970: 0) {
+                        BubbleView(bubbleText: viewModel.getTask(id: taskID).deadlineDate.formatted(), isInteractable: false)
+                    }
                     // TODO: вернуть, когда появятся группы
 //                    Text(task.groups.joined(separator: Constants.separator))
 //                        .font(CommonConstants.mainLabelFont)

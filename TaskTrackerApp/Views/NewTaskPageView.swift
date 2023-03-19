@@ -10,7 +10,8 @@ import SwiftUI
 struct NewTaskPageView: View {
     @State private var title: String = ""
     @State private var description: String = ""
-    @State private var deadlineDate: Date = Date()
+    @State private var deadlineDate: Date = Date(timeIntervalSince1970: 0)
+    @State private var showAlert: Bool = false
     @ObservedObject var viewModel = AppViewModel()
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
@@ -25,14 +26,21 @@ struct NewTaskPageView: View {
         Spacer()
         ButtonView(title: "Create") {
             print("im here")
-            viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
-            presentationMode.wrappedValue.dismiss()
+            if Validate.checkInputCorrect(type: .normal, value: title) {
+                viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
+                presentationMode.wrappedValue.dismiss()
+            } else {
+                showAlert = true
+            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
         .padding(.bottom, Grid.stripe * 2)
         .padding(.horizontal, Grid.stripe * 2)
         .navigationBarTitle("Create task")
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text("Empty title"), dismissButton: .default(Text("OK")))
+        }
     }
 }
 

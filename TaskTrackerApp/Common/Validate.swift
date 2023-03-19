@@ -23,5 +23,5 @@ struct Validate {
         default:
             return !value.trimmingCharacters(in: .whitespaces).isEmpty
         }
-    }
+    }    
 }

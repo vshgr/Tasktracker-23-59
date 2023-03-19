@@ -31,9 +31,12 @@ struct TaskPageView: View {
             HStack {
                 friend
                 Spacer()
-                Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
-                    .font(.system(size: 12))
+                if viewModel.getTask(id: taskId).deadlineDate != Date(timeIntervalSince1970: 0) {
+                    Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
+                        .font(.system(size: 12))
+                }
             }
+            // TODO: вернуть, когда появятся группы
             //            groupsScroll
             //                .frame(height: Constants.scrollHeight)
             Text(viewModel.getTask(id: taskId).name)
@@ -67,7 +70,8 @@ struct TaskPageView: View {
                         secondaryButton: .cancel()
                     )
                 }
-            Image(systemName: "bell.fill")
+            // TODO: вернуть, когда появятся уведомления
+//            Image(systemName: "bell.fill")
         }
     }
 }
