@@ -44,7 +44,8 @@ struct TaskPageView: View {
         }
         .padding(.all, Grid.stripe)
         .navigationBarTitle("Task")
-        .navigationBarItems(trailing: barButtonView)
+        .navigationBarItems(leading: CustomBackButton(), trailing: barButtonView)
+        .navigationBarBackButtonHidden(true)
     }
     
     private var barButtonView: some View {

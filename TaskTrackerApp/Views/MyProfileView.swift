@@ -55,9 +55,8 @@ struct MyProfileView: View {
                 
             }
         }
-        .onAppear(perform: {
-            self.viewModel.fetchData()
-        })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         .navigationDestination(isPresented: $isSignedOut) {
             WelcomeView()
         }

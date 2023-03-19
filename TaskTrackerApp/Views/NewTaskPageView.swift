@@ -28,6 +28,8 @@ struct NewTaskPageView: View {
             viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
             presentationMode.wrappedValue.dismiss()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         .padding(.bottom, Grid.stripe * 2)
         .padding(.horizontal, Grid.stripe * 2)
         .navigationBarTitle("Create task")

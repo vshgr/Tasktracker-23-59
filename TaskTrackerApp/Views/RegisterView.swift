@@ -49,6 +49,8 @@ struct RegisterView: View {
                 }
                 .padding(.horizontal, Grid.stripe * 2)
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }

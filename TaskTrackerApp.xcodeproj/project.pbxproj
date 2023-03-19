@@ -51,6 +51,7 @@
 		48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */; };
 		48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */; };
 		48F7B2E629C7636E00840E4B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */; };
+		48F7B2E829C7A69D00840E4B /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageView.swift; sourceTree = "<group>"; };
 		48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinePickerView.swift; sourceTree = "<group>"; };
 		48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDescriptionView.swift; sourceTree = "<group>"; };
+		48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				48F7B2DD29C4BCDD00840E4B /* TaskOwnerView.swift */,
 				48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */,
 				48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */,
+				48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */,
 				488EC81229BB84AA00BCFD52 /* Color+.swift in Sources */,
 				488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */,
+				48F7B2E829C7A69D00840E4B /* CustomBackButton.swift in Sources */,
 				488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */,
 				488EC83129BB91B900BCFD52 /* LoginView.swift in Sources */,
 				48F7B2CB29BC880B00840E4B /* FeedView.swift in Sources */,
