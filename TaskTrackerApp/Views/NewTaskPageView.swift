@@ -12,6 +12,7 @@ struct NewTaskPageView: View {
     @State private var description: String = ""
     @State private var deadlineDate: Date = Date()
     @ObservedObject var viewModel = AppViewModel()
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack (spacing: CommonConstants.contentStackSpacing) {
@@ -25,12 +26,12 @@ struct NewTaskPageView: View {
         ButtonView(title: "Create") {
             print("im here")
             viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
+            presentationMode.wrappedValue.dismiss()
         }
         .padding(.bottom, Grid.stripe * 2)
         .padding(.horizontal, Grid.stripe * 2)
         .navigationBarTitle("Create task")
     }
-        
 }
 
 struct NTP: PreviewProvider {
