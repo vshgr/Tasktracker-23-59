@@ -27,9 +27,6 @@ struct NewTaskPageView: View {
                 print("im here")
                 viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
             }
-            .onAppear(perform: {
-                viewModel.fetchData()
-            })
                 .padding(.bottom, Grid.stripe * 2)
                 .padding(.horizontal, Grid.stripe * 2)
             .navigationBarTitle("Create task")

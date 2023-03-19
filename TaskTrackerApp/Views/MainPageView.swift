@@ -54,7 +54,7 @@ struct MainPageView: View {
                     .padding(.horizontal, Grid.stripe)
                     
                     ScrollView (showsIndicators: false){
-                        VStack(spacing: CommonConstants.contentStackSpacing) {
+                        VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                             if viewModel.getUserTasks().count != 0 {
                                 ForEach(viewModel.getUserTasks(), id: \.name) { task in
                                     TaskView(isSelfTask: true, taskData: task)
@@ -63,12 +63,6 @@ struct MainPageView: View {
                                 Text("no tasks :(")
                                     .foregroundColor(.dl.hintCol())
                             }
-                            //                            ForEach(0..<10) { index in
-                            //                                TaskView(isSelfTask: Bool.random())
-                            //                                    .onTapGesture {
-                            //                                        isTaskPagePresented = true
-                            //                                    }
-                            //                            }
                         }
                     }
                     .padding(.top, CommonConstants.contentStackSpacing)

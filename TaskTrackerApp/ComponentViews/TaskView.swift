@@ -37,12 +37,13 @@ struct TaskView: View {
     // MARK: - Views
     
     var body: some View {
-        HStack (spacing: CommonConstants.smallContentSpacing) {
+        HStack {
             VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                 if selfTask == false {
                     FriendHeaderView()
                 }
                 if selfTask == true {
+                    // TODO: вернуть, когда появятся пермишены
 //                    Text(task.permission.rawValue)
 //                        .font(.dl.ralewayMedium(12))
 //                        .foregroundColor(Color.dl.hintCol())
@@ -61,6 +62,8 @@ struct TaskView: View {
                 }
             }
             .padding(.all, CommonConstants.smallContentSpacing)
+            .padding(.trailing)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .background(Constants.taskColor)
             .cornerRadius(10)
             VStack(spacing: CommonConstants.contentStackSpacing) {
@@ -70,14 +73,15 @@ struct TaskView: View {
                         .frame(width: 30, height: 30)
                         .opacity(isDone ? 0.3 : 1)
                 }
-                Button(action: {}) {
-                    Constants.add
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color.dl.hintCol())
-                }
+                // TODO: вернуть, когда появятся группы
+//                Button(action: {}) {
+//                    Constants.add
+//                        .resizable()
+//                        .frame(width: 30, height: 30)
+//                        .foregroundColor(Color.dl.hintCol())
+//                }
             }
-            .padding(.leading, -30)
+            .padding(.leading, -25)
         }
     }
     
@@ -90,8 +94,8 @@ struct TaskView: View {
     }
 }
 
-//struct T: PreviewProvider {
-//    static var previews: some View {
-//        TaskView(isSelfTask: false)
-//    }
-//}
+struct T: PreviewProvider {
+    static var previews: some View {
+        TaskView(isSelfTask: false, taskData: Task(name: "123", description: "123", deadlineDate: Date()))
+    }
+}
