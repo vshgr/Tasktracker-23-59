@@ -36,8 +36,10 @@ struct FriendsView: View {
                     ScrollView {
                         if (!searchedUsers.isEmpty) {
                             ForEach(searchedUsers.indices, id: \.self) { user in
-                               TaskOwnerView(user: searchedUsers[user])
-                                    .padding(.top, CommonConstants.smallContentSpacing)
+                                NavigationLink(destination: AnotherUserProfileView(user: searchedUsers[user])) {
+                                    TaskOwnerView(user: searchedUsers[user])
+                                         .padding(.top, CommonConstants.smallContentSpacing)
+                                }
                             }
                         }
                     }

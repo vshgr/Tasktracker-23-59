@@ -55,6 +55,7 @@
 		48F7B2EA29C7AA0400840E4B /* FirestoreTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */; };
 		48F7B31C29CF33FC00840E4B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B31B29CF33FC00840E4B /* SearchView.swift */; };
 		48F7B31E29CF387E00840E4B /* FirestoreFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */; };
+		48F7B32029CF526800840E4B /* AnotherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B31F29CF526800840E4B /* AnotherUserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTasks.swift; sourceTree = "<group>"; };
 		48F7B31B29CF33FC00840E4B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriends.swift; sourceTree = "<group>"; };
+		48F7B31F29CF526800840E4B /* AnotherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherUserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				48F7B2D429C3B13D00840E4B /* MyProfileView.swift */,
 				48F7B2DB29C4BA0800840E4B /* TaskPageView.swift */,
 				48F7B2DF29C4C51400840E4B /* NewTaskPageView.swift */,
+				48F7B31F29CF526800840E4B /* AnotherUserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				48F7B2E229C4CB7400840E4B /* DeadlinePickerView.swift in Sources */,
 				488EC84D29BBC23E00BCFD52 /* FriendHeaderView.swift in Sources */,
 				488EC84429BBBD6A00BCFD52 /* MainPageView.swift in Sources */,
+				48F7B32029CF526800840E4B /* AnotherUserProfileView.swift in Sources */,
 				488EC80E29BB842300BCFD52 /* ButtonView.swift in Sources */,
 				488EC81029BB848000BCFD52 /* Grid.swift in Sources */,
 				488EC84B29BBBE5B00BCFD52 /* BubbleView.swift in Sources */,

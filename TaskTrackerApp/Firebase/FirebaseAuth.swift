@@ -29,6 +29,7 @@ class AppViewModel: ObservableObject {
     // MARK: - Fields
     @Published var users = [User]()
     @Published var tasks = [Task]()
+    @Published var anotherTasks = [Task]()
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?

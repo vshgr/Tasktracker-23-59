@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 
-extension AppViewModel {
+extension AppViewModel {    
     func insertTask(email: String, task: Task) {
         var ref: DocumentReference? = nil
         ref = db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").addDocument(data: [
@@ -46,9 +46,40 @@ extension AppViewModel {
         }
     }
     
+    func getUserTasksByEmail(email: String) -> [Task] {
+        db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
+            guard let tasks = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.anotherTasks = tasks.map { queryDocumentSnapshot -> Task in
+                let data = queryDocumentSnapshot.data()
+                let id = queryDocumentSnapshot.documentID
+                let name = data["name"] as? String ?? ""
+                let description = data["description"] as? String ?? ""
+                let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
+                let date = deadlineDate.dateValue()
+                return Task(id: id, name: name, description: description, deadlineDate: date)
+            }
+            
+        }
+        return anotherTasks
+    }
+    
     func getTaskByID (id: String) -> Task {
         var ret = Task()
         for task in tasks {
+            if task.id == id {
+                ret = task
+            }
+        }
+        return ret
+    }
+    
+    func getAnotherUserTaskById(id: String, email: String) -> Task {
+        var ret = Task()
+        for task in getUserTasksByEmail(email: email) {
             if task.id == id {
                 ret = task
             }
