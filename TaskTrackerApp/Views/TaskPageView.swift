@@ -17,32 +17,31 @@ struct TaskPageView: View {
     
     // MARK: - Fields
     var taskId: String
+    var userOwner: User
     @ObservedObject private var viewModel = AppViewModel()
     @State private var showAlert: Bool = false
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
-    // MARK: - UI Components
-    private let friend = TaskOwnerView()
     //    private let groupsScroll = BubblesScrollView(type: .filled)
     
     // MARK: - View Lifecycle
     var body: some View {
         VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
             HStack {
-                friend
+                TaskOwnerView(user: userOwner)
                 Spacer()
-                if viewModel.getTask(id: taskId).deadlineDate != Date(timeIntervalSince1970: 0) {
-                    Text(viewModel.getTask(id: taskId).deadlineDate.formatted())
+                if viewModel.getTaskByID(id: taskId).deadlineDate != Date(timeIntervalSince1970: 0) {
+                    Text(viewModel.getTaskByID(id: taskId).deadlineDate.formatted())
                         .font(.system(size: 12))
                 }
             }
             // TODO: вернуть, когда появятся группы
             //            groupsScroll
             //                .frame(height: Constants.scrollHeight)
-            Text(viewModel.getTask(id: taskId).name)
+            Text(viewModel.getTaskByID(id: taskId).name)
                 .font(.dl.ralewayBold())
             ScrollView {
-                Text(viewModel.getTask(id: taskId).description)
+                Text(viewModel.getTaskByID(id: taskId).description)
                     .lineSpacing(Constants.linesSpacing)
                     .font(.dl.ralewayMedium())
             }

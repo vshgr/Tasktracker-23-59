@@ -46,7 +46,7 @@ extension AppViewModel {
         }
     }
     
-    func getTask (id: String) -> Task {
+    func getTaskByID (id: String) -> Task {
         var ret = Task()
         for task in tasks {
             if task.id == id {

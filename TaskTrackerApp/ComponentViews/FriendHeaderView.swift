@@ -14,7 +14,7 @@ struct FriendHeaderView: View {
     }
     
     // MARK: - Fields
-    private let user = User()
+    var user = User()
     private let image: Image
     private let name: Text
     

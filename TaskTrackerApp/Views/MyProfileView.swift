@@ -20,7 +20,7 @@ struct MyProfileView: View {
     @ObservedObject var viewModel = AppViewModel()
     
     private var photoArea: some View {
-        Image(user.profilePicUrl)
+        Image(viewModel.getUser()?.profilePicUrl ?? "none")
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: Constants.photoWidth, height: Constants.photoWidth)

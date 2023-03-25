@@ -53,6 +53,8 @@
 		48F7B2E629C7636E00840E4B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F7B2E529C7636E00840E4B /* FirebaseFirestoreSwift */; };
 		48F7B2E829C7A69D00840E4B /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */; };
 		48F7B2EA29C7AA0400840E4B /* FirestoreTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */; };
+		48F7B31C29CF33FC00840E4B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B31B29CF33FC00840E4B /* SearchView.swift */; };
+		48F7B31E29CF387E00840E4B /* FirestoreFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDescriptionView.swift; sourceTree = "<group>"; };
 		48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTasks.swift; sourceTree = "<group>"; };
+		48F7B31B29CF33FC00840E4B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFriends.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 				48F7B2E129C4CB7400840E4B /* DeadlinePickerView.swift */,
 				48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */,
 				48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */,
+				48F7B31B29CF33FC00840E4B /* SearchView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			children = (
 				48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */,
 				48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */,
+				48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 				488EC81229BB84AA00BCFD52 /* Color+.swift in Sources */,
 				488EC83B29BBA5F000BCFD52 /* Validate.swift in Sources */,
 				48F7B2E829C7A69D00840E4B /* CustomBackButton.swift in Sources */,
+				48F7B31C29CF33FC00840E4B /* SearchView.swift in Sources */,
 				488EC83D29BBBC4400BCFD52 /* ProfileInfoView.swift in Sources */,
 				488EC83129BB91B900BCFD52 /* LoginView.swift in Sources */,
 				48F7B2CB29BC880B00840E4B /* FeedView.swift in Sources */,
@@ -369,6 +376,7 @@
 				488EC81029BB848000BCFD52 /* Grid.swift in Sources */,
 				488EC84B29BBBE5B00BCFD52 /* BubbleView.swift in Sources */,
 				488EC84F29BBD7CE00BCFD52 /* TabBarView.swift in Sources */,
+				48F7B31E29CF387E00840E4B /* FirestoreFriends.swift in Sources */,
 				488EC83929BBA32400BCFD52 /* ProfileView.swift in Sources */,
 				488EC84929BBBDD800BCFD52 /* Task.swift in Sources */,
 				488EC83529BB983600BCFD52 /* Constants.swift in Sources */,

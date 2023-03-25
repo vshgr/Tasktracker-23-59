@@ -39,15 +39,15 @@ struct TaskView: View {
 //                        .font(.dl.ralewayMedium(12))
 //                        .foregroundColor(Color.dl.hintCol())
                 }
-                Text(viewModel.getTask(id: taskID).name)
+                Text(viewModel.getTaskByID(id: taskID).name)
                     .font(.dl.ralewayBold(14))
                     .foregroundColor(Color.black)
                     .lineLimit(3)
                     .multilineTextAlignment(.leading)
                     
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    if viewModel.getTask(id: taskID).deadlineDate != Date(timeIntervalSince1970: 0) {
-                        BubbleView(bubbleText: viewModel.getTask(id: taskID).deadlineDate.formatted(), isInteractable: false)
+                    if viewModel.getTaskByID(id: taskID).deadlineDate != Date(timeIntervalSince1970: 0) {
+                        BubbleView(bubbleText: viewModel.getTaskByID(id: taskID).deadlineDate.formatted(), isInteractable: false)
                     }
                     // TODO: вернуть, когда появятся группы
 //                    Text(task.groups.joined(separator: Constants.separator))

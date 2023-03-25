@@ -30,7 +30,7 @@ struct ProfileInfoView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image(user.profilePicUrl)
+            Image("none")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Constants.picWH, height: Constants.picWH)

@@ -14,7 +14,7 @@ struct TaskOwnerView: View {
     }
     
     // MARK: - Properties
-    private let user = User()
+    var user: User
     
     // MARK: - Body
     var body: some View {
@@ -32,6 +32,6 @@ struct TaskOwnerView: View {
 
 struct FriendAccountSVConponent_Previews: PreviewProvider {
     static var previews: some View {
-        TaskOwnerView()
+        TaskOwnerView(user: User())
     }
 }

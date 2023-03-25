@@ -58,7 +58,7 @@ struct MainPageView: View {
                         VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                             if viewModel.tasks.count > 0 {
                                 ForEach(viewModel.tasks) { task in
-                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "")) {
+                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: viewModel.getUser() ?? User())) {
                                         TaskView(taskID: task.id ?? "", selfTask: true)
                                     }
                                 }

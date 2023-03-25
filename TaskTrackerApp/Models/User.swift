@@ -5,11 +5,21 @@
 //  Created by Алиса Вышегородцева on 10.03.2023.
 //
 
-struct User {
+struct User: Comparable {
     var name: String
     var username: String
     var email: String
     var profilePicUrl: String
+    
+    static func ==(lhs: User, rhs: User) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.username == rhs.username &&
+        lhs.email == rhs.email
+    }
+    
+    static func < (lhs: User, rhs: User) -> Bool {
+        lhs.name < rhs.name
+    }
 }
 
 extension User {
