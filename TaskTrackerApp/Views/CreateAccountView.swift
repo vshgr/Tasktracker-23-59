@@ -17,21 +17,22 @@ struct CreateAccountView: View {
     @State var navigate: Bool = false
     @State var showAlert: Bool = false
     @State var errorMessage: String = ""
+    @State var userImage: String = "none"
     
     @ObservedObject var viewModel = AppViewModel()
     
     // MARK: - Setups
     var body: some View {
         VStack(spacing: CommonConstants.contentStackSpacing) {
-            // TODO: убрать, когда добавим фотки
+            //             TODO: убрать, когда добавим фотки
             
-            //                ProfileView()
-            //                    .padding(.top, CommonConstants.topSpace)
+            ProfileView(randImage: $userImage)
+                .padding(.top, CommonConstants.topSpace)
             
             VStack(spacing: CommonConstants.contentStackSpacing) {
-                InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .numberPad, inputType: .normal)
-                InputView(title: "Username", text: $usernameField, hint: "enter username...", keyboardType: .numberPad, inputType: .username)
-                InputView(title: "Email", text: $emailField, hint: "\(viewModel.getUser()?.email ?? "test@gmail.com")", keyboardType: .numberPad, inputType: .normal).disabled(true)
+                InputView(title: "Name", text: $nameField, hint: "enter name...", keyboardType: .default, inputType: .normal)
+                InputView(title: "Username", text: $usernameField, hint: "enter username...", keyboardType: .default, inputType: .username)
+                InputView(title: "Email", text: $emailField, hint: "\(viewModel.getUser()?.email ?? "test@gmail.com")", keyboardType: .default, inputType: .normal).disabled(true)
             }
             .padding(.horizontal, Grid.stripe)
             .onAppear() {
@@ -41,7 +42,7 @@ struct CreateAccountView: View {
             Spacer()
             ButtonView(title: "Create account") {
                 createButtonPressed()
-                viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField)
+                viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField, pic: userImage)
             }
             .padding(.bottom, Grid.stripe * 2)
             .padding(.horizontal, Grid.stripe * 2)

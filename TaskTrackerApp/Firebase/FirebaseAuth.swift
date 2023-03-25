@@ -43,21 +43,24 @@ class AppViewModel: ObservableObject {
     
     // MARK: - Actions
     func fetchData() {
-        db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
-            guard let users = querySnapshot?.documents else {
-                print("No documents")
-                return
+        if (signedIn) {
+            db.collection("users").addSnapshotListener { [self] (querySnapshot, error) in
+                guard let users = querySnapshot?.documents else {
+                    print("No documents")
+                    return
+                }
+                
+                self.users = users.map { queryDocumentSnapshot -> User in
+                    let data = queryDocumentSnapshot.data()
+                    let name = data["name"] as? String ?? ""
+                    let username = data["username"] as? String ?? ""
+                    let email = data["email"] as? String ?? ""
+                    let pic = data["pic"] as? String ?? "none"
+                    return User(name: name, username: username, email: email, profilePicUrl: pic)
+                }
             }
-            
-            self.users = users.map { queryDocumentSnapshot -> User in
-                let data = queryDocumentSnapshot.data()
-                let name = data["name"] as? String ?? ""
-                let username = data["username"] as? String ?? ""
-                let email = data["email"] as? String ?? ""
-                return User(name: name, username: username, email: email, profilePicUrl: "none")
-            }
+            getTasks()
         }
-        getTasks()
     }
     
     func getUser() -> User? {
@@ -103,6 +106,7 @@ class AppViewModel: ObservableObject {
             "email": email,
             "name": "",
             "username": "",
+            "pic": ""
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -112,11 +116,12 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func insertUserInfo(email: String, username: String, name: String) {
+    func insertUserInfo(email: String, username: String, name: String, pic: String) {
         let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
         docRef.updateData([
             "username": username,
-            "name": name
+            "name": name,
+            "pic": pic
         ])
     } 
 }

@@ -31,7 +31,7 @@ struct MainPageView: View {
             ZStack {
                 Color.white.edgesIgnoringSafeArea(.all)
                 VStack (alignment: .leading) {
-                    ProfileInfoView(name: viewModel.getUser()?.name ?? "", username: viewModel.getUser()?.username ?? "")
+                    ProfileInfoView(user: viewModel.getUser() ?? User())
                         .padding(.top, CommonConstants.topSpace)
                         .padding(.horizontal, Grid.stripe)
                         .onTapGesture {
