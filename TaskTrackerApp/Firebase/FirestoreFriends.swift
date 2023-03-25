@@ -25,7 +25,7 @@ extension AppViewModel {
     func searchUserByUsername(username: String) -> User {
         var ret = User()
         for user in users {
-            if user.username.lowercased() == username.lowercased() {
+            if user.username.lowercased().starts(with: username.lowercased()) {
                 ret = user
             }
         }
