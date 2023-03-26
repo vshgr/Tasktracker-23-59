@@ -23,6 +23,11 @@ struct AnotherUserProfileView: View {
     @State private var isFilterPagePresented: Bool = false
     @ObservedObject var viewModel = AppViewModel()
     
+    init(user: User) {
+        self.user = user
+        self.viewModel.getTasksByEmail(email: user.email)
+    }
+    
     // MARK: - Setups
     var body: some View {
         ZStack {
@@ -50,8 +55,8 @@ struct AnotherUserProfileView: View {
                 
                 ScrollView (showsIndicators: false) {
                     VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                        if viewModel.getUserTasksByEmail(email: user.email).count > 0 {
-                            ForEach(viewModel.getUserTasksByEmail(email: user.email)) { task in
+                        if viewModel.anotherTasks.count > 0 {
+                            ForEach(viewModel.anotherTasks) { task in
                                 NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: user)) {
                                     TaskView(taskID: task.id ?? "", selfTask: false)
                                 }
@@ -68,9 +73,11 @@ struct AnotherUserProfileView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
+//        .onAppear() {
+//            self.viewModel.fetchUserTask(email: user.email)
+//        }
     }
 }
-
 
 struct AnotherUserProfileViewpr: PreviewProvider {
     static var previews: some View {

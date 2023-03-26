@@ -17,7 +17,7 @@ struct DatePickerTextField: View {
                     isDatePickerPresented = true
                 }
                 .sheet(isPresented: $isDatePickerPresented) {
-                    DatePicker("", selection: $deadline, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("", selection: $deadline, in: Date()..., displayedComponents: [.date, .hourAndMinute])
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .labelsHidden()
                         .presentationDetents([.medium, .large])

@@ -54,7 +54,7 @@ struct MainPageView: View {
                     .padding(.top, CommonConstants.smallContentSpacing)
                     .padding(.horizontal, Grid.stripe)
                     
-                    ScrollView (showsIndicators: false){
+                    ScrollView (showsIndicators: false) {
                         VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                             if viewModel.tasks.count > 0 {
                                 ForEach(viewModel.tasks) { task in

@@ -78,9 +78,9 @@ struct TaskView: View {
             }
             .padding(.leading, -25)
         }
-        .onAppear () {
-            self.viewModel.fetchData()
-        }
+//        .onAppear () {
+//            self.viewModel.fetchData()
+//        }
     }
     
     // MARK: - Actions
