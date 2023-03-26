@@ -14,6 +14,7 @@ struct MyProfileView: View {
     }
     
     @State private var isSignedOut = false
+    @State private var showActivity: Bool = false
     @State private var name = "Yana Barbashina"
     @State private var username = "@yana_wishnya"
     private let user = User()
@@ -42,22 +43,15 @@ struct MyProfileView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 Spacer()
                 ButtonView(title: "Log out") {
-                    isSignedOut = true
-                    do {
-                        try viewModel.auth.signOut()
-                    } catch let signOutError as NSError {
-                        isSignedOut = false
-                        print("Error signing out: %@", signOutError)
-                    }                    
+                    viewModel.handleSignOut()
                 }
                 .padding(.bottom, Grid.stripe * 2)
                 .padding(.horizontal, Grid.stripe * 2)
-                
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-        .navigationDestination(isPresented: $isSignedOut) {
+        .navigationDestination(isPresented: $viewModel.isUserLoggedOut) {
             WelcomeView()
         }
     }
