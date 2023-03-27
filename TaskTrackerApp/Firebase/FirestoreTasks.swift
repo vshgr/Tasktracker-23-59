@@ -41,14 +41,13 @@ extension AppViewModel {
                 let description = data["description"] as? String ?? ""
                 let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
                 let date = deadlineDate.dateValue()
-//                let deadlineDate = data["deadlineDate"] as? Date ?? Date()
                 return Task(id: id, name: name, description: description, deadlineDate: date)
             }
         }
     }
     
-    func getUserTasksByEmail(email: String) -> [Task] {
-        db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
+    func fetchFriendsTasks(email: String) {
+         db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
             guard let tasks = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -59,48 +58,9 @@ extension AppViewModel {
                 let id = queryDocumentSnapshot.documentID
                 let name = data["name"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
-                let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp(date: Date())
+                let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
                 let date = deadlineDate.dateValue()
                 return Task(id: id, name: name, description: description, deadlineDate: date)
-            }
-        }
-        for elem in anotherTasks {
-            print(elem.name)
-        }
-        return anotherTasks
-    }
-    
-    func fetchUserTask(email: String) {
-        db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
-            guard let tasks = querySnapshot?.documents else {
-                print("No documents")
-                return
-            }
-            
-            self.anotherTasks = tasks.map { queryDocumentSnapshot -> Task in
-                let data = queryDocumentSnapshot.data()
-                let id = queryDocumentSnapshot.documentID
-                let name = data["name"] as? String ?? ""
-                let description = data["description"] as? String ?? ""
-                let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp(date: Date())
-                let date = deadlineDate.dateValue()
-                return Task(id: id, name: name, description: description, deadlineDate: date)
-            }
-        }
-    }
-    
-    func getTasksByEmail(email: String) {
-        db.collection("users").document(email).collection("tasks").getDocuments { snapshot, error in
-            if error == nil {
-                if let snapshot = snapshot {
-                    DispatchQueue.main.async {
-                        self.anotherTasks = snapshot.documents.map { d in
-                            return Task(id: d.documentID, name: d["name"] as? String ?? "", description: d["name"] as? String ?? "", deadlineDate: d["deadlineDate"] as? Date ?? Date())
-                        }
-                    }
-                }
-            } else {
-                
             }
         }
     }
@@ -117,11 +77,11 @@ extension AppViewModel {
     
     func getAnotherUserTaskById(id: String, email: String) -> Task {
         var ret = Task()
-        for task in getUserTasksByEmail(email: email) {
-            if task.id == id {
-                ret = task
-            }
-        }
+        //        for task in fetchFriendsTasks(email: email) {
+        //            if task.id == id {
+        //                ret = task
+        //            }
+        //        }
         return ret
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AnotherUserProfileView: View {
     // MARK: - Constants
@@ -25,7 +26,6 @@ struct AnotherUserProfileView: View {
     
     init(user: User) {
         self.user = user
-        self.viewModel.getTasksByEmail(email: user.email)
     }
     
     // MARK: - Setups
@@ -67,22 +67,22 @@ struct AnotherUserProfileView: View {
                         }
                     }
                 }
+                .onAppear() {
+                    self.viewModel.fetchFriendsTasks(email: user.email)
+                }
                 .padding(.top, CommonConstants.contentStackSpacing)
                 .padding(.horizontal, Grid.stripe)
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-//        .onAppear() {
-//            self.viewModel.fetchUserTask(email: user.email)
-//        }
     }
 }
 
-struct AnotherUserProfileViewpr: PreviewProvider {
-    static var previews: some View {
-        AnotherUserProfileView(user: User())
-    }
-}
+//struct AnotherUserProfileViewpr: PreviewProvider {
+//    static var previews: some View {
+//        AnotherUserProfileView(user: User())
+//    }
+//}
 
 

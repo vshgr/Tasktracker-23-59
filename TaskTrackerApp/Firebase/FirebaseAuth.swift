@@ -30,13 +30,21 @@ class AppViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var tasks = [Task]()
     @Published var anotherTasks = [Task]()
-    @Published var friends = [User]()
+    @Published var isUserLoggedOut = false
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?
     
     init() {
+        DispatchQueue.main.async {
+            self.isUserLoggedOut = self.auth.currentUser?.uid == nil
+        }
         fetchData()
+    }
+    
+    func handleSignOut() {
+        isUserLoggedOut.toggle()
+        try? auth.signOut()
     }
     
     var signedIn: Bool {
