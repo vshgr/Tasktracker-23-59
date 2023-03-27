@@ -24,28 +24,37 @@ struct FriendsView: View {
                     SearchView(text: $searchText) {
                         searchedUsers.removeAll()
                     }
-                        .padding(.top, CommonConstants.smallContentSpacing)
-                        .onSubmit {
-                            searchedUsers.removeAll()
-                            let user = viewModel.searchUserByUsername(username: searchText.trimmingCharacters(in: .whitespaces))
-                            print(user)
-                            if user != User() {
-                                searchedUsers.append(user)
+                    .padding(.top, CommonConstants.smallContentSpacing)
+                    .onSubmit {
+                        searchedUsers.removeAll()
+                        let user = viewModel.searchUserByUsername(username: searchText.trimmingCharacters(in: .whitespaces))
+                        print(user)
+                        if user != User() {
+                            searchedUsers.append(user)
+                        }
+                    }
+                    if !viewModel.friends.isEmpty {
+                        Text("your friends")
+                            .padding(.top, 20)
+                            .font(.dl.ralewayBold(15))
+                        ScrollView{
+                            ForEach(viewModel.friends.indices, id: \.self) { user in
+                                NavigationLink(destination: AnotherUserProfileView(user: viewModel.friends[user])) {
+                                    TaskOwnerView(user: viewModel.friends[user])
+                                        .padding(.top, CommonConstants.smallContentSpacing)
+                                }
                             }
                         }
-                    ScrollView {
-                        // MARK: отображение чисто друзей
-//                        ForEach(viewModel.friends.indices, id: \.self) { user in
-//                            NavigationLink(destination: AnotherUserProfileView(user: viewModel.friends[user])) {
-//                                TaskOwnerView(user: viewModel.friends[user])
-//                                     .padding(.top, CommonConstants.smallContentSpacing)
-//                            }
-//                        }
-                        if (!searchedUsers.isEmpty) {
+                    }
+                    if (!searchedUsers.isEmpty) {
+                        Text ("search")
+                            .padding(.top, 20)
+                            .font(.dl.ralewayBold(15))
+                        ScrollView {
                             ForEach(searchedUsers.indices, id: \.self) { user in
                                 NavigationLink(destination: AnotherUserProfileView(user: searchedUsers[user])) {
                                     TaskOwnerView(user: searchedUsers[user])
-                                         .padding(.top, CommonConstants.smallContentSpacing)
+                                        .padding(.top, CommonConstants.smallContentSpacing)
                                 }
                             }
                         }

@@ -69,8 +69,10 @@ class AppViewModel: ObservableObject {
                     let pic = data["pic"] as? String ?? "none"
                     let friendsEmails = data["friends"] as? [String] ?? [String]()
                     
-                    self.friends = friendsEmails.map { f in
-                        return self.getUserByEmail(email: f) ?? User()
+                    if auth.currentUser?.email == email {
+                        self.friends = friendsEmails.map { f in
+                            return self.getUserByEmail(email: f) ?? User()
+                        }
                     }
                     return User(name: name, username: username, email: email, friends: friends, profilePicUrl: pic)
                 }
