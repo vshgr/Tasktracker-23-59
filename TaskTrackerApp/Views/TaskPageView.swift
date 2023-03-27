@@ -47,6 +47,9 @@ struct TaskPageView: View {
                     .font(.dl.ralewayMedium())
             }
         }
+        .onAppear() {
+            viewModel.fetchFriendsTasks(email: userOwner.email)
+        }
         .padding(.all, Grid.stripe)
         .navigationBarTitle("Task")
         .navigationBarItems(leading: CustomBackButton(), trailing: barButtonView)

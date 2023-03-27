@@ -53,26 +53,11 @@ struct AnotherUserProfileView: View {
                 .padding(.top, CommonConstants.smallContentSpacing)
                 .padding(.horizontal, Grid.stripe)
                 
-                ScrollView (showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                        if viewModel.anotherTasks.count > 0 {
-                            ForEach(viewModel.anotherTasks) { task in
-                                NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: user)) {
-                                    TaskView(taskID: task.id ?? "", selfTask: false)
-                                }
-                            }
-                        } else {
-                            Text("no tasks :(")
-                                .foregroundColor(.dl.hintCol())
-                        }
-                    }
-                }
-                .onAppear() {
-                    self.viewModel.fetchFriendsTasks(email: user.email)
-                }
-                .padding(.top, CommonConstants.contentStackSpacing)
-                .padding(.horizontal, Grid.stripe)
+                TasksScrollView(tasks: viewModel.anotherTasks, taskOwner: user, isSelf: false)
             }
+        }
+        .onAppear() {
+            viewModel.fetchFriendsTasks(email: user.email)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())

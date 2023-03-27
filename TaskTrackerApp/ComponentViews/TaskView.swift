@@ -21,6 +21,8 @@ struct TaskView: View {
     // MARK: - Properties
     
     @State private var isDone = false
+    @State private var added = false
+    var taskOwner: User
     var taskID: String
     var selfTask: Bool
     @ObservedObject private var viewModel = AppViewModel()
@@ -58,11 +60,21 @@ struct TaskView: View {
             .background(Constants.taskColor)
             .cornerRadius(10)
             VStack(spacing: CommonConstants.contentStackSpacing) {
-                Button(action: setDone) {
-                    Constants.done
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .opacity(isDone ? 0.3 : 1)
+                if selfTask {
+                    Button(action: setDone) {
+                        Constants.done
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .opacity(isDone ? 0.3 : 1)
+                    }
+                } else {
+                    Button(action: addToSelfTasks) {
+                        Image("addToGroup")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .opacity(added ? 0.3 : 1)
+                    }
+                    .disabled(added)
                 }
                 // TODO: вернуть, когда появятся группы
                 //                Button(action: {}) {
@@ -71,6 +83,9 @@ struct TaskView: View {
                 //                        .frame(width: 30, height: 30)
                 //                        .foregroundColor(Color.dl.hintCol())
                 //                }
+            }
+            .onAppear() {
+                viewModel.fetchFriendsTasks(email: taskOwner.email)
             }
             .padding(.leading, -25)
         }
@@ -81,6 +96,12 @@ struct TaskView: View {
     private func setDone(){
         withAnimation(.easeInOut(duration: 0.5)) {
             isDone.toggle()
+        }
+    }
+    
+    private func addToSelfTasks() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            added = true
         }
     }
 }

@@ -33,11 +33,12 @@ struct FriendsView: View {
                             searchedUsers.append(user)
                         }
                     }
+                    
                     if !viewModel.friends.isEmpty {
                         Text("your friends")
                             .padding(.top, 20)
                             .font(.dl.ralewayBold(15))
-                        ScrollView{
+                        ScrollView {
                             ForEach(viewModel.friends.indices, id: \.self) { user in
                                 NavigationLink(destination: AnotherUserProfileView(user: viewModel.friends[user])) {
                                     TaskOwnerView(user: viewModel.friends[user])
@@ -46,7 +47,8 @@ struct FriendsView: View {
                             }
                         }
                     }
-                    if (!searchedUsers.isEmpty) {
+                    
+                    if !searchedUsers.isEmpty {
                         Text ("search")
                             .padding(.top, 20)
                             .font(.dl.ralewayBold(15))
@@ -59,10 +61,8 @@ struct FriendsView: View {
                             }
                         }
                     }
-                    Spacer()
                 }
                 .padding(.horizontal, Grid.stripe)
-                
             }
             .navigationBarBackButtonHidden(true)
             .onAppear() {

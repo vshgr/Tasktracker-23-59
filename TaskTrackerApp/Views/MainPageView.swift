@@ -54,22 +54,7 @@ struct MainPageView: View {
                     .padding(.top, CommonConstants.smallContentSpacing)
                     .padding(.horizontal, Grid.stripe)
                     
-                    ScrollView (showsIndicators: false) {
-                        VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                            if viewModel.tasks.count > 0 {
-                                ForEach(viewModel.tasks) { task in
-                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: viewModel.getUser() ?? User())) {
-                                        TaskView(taskID: task.id ?? "", selfTask: true)
-                                    }
-                                }
-                            } else {
-                                Text("no tasks :(")
-                                    .foregroundColor(.dl.hintCol())
-                            }
-                        }
-                    }
-                    .padding(.top, CommonConstants.contentStackSpacing)
-                    .padding(.horizontal, Grid.stripe)
+                    TasksScrollView(tasks: viewModel.tasks, taskOwner: viewModel.getUser() ?? User(), isSelf: true)
                 }
                 VStack (alignment: .trailing) {
                     Spacer()

@@ -47,7 +47,7 @@ extension AppViewModel {
     }
     
     func fetchFriendsTasks(email: String) {
-         db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
+        db.collection("users").document(email).collection("tasks").addSnapshotListener { (querySnapshot, error) in
             guard let tasks = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -72,16 +72,24 @@ extension AppViewModel {
                 ret = task
             }
         }
+        
+        if !anotherTasks.isEmpty {
+            for task in anotherTasks {
+                if task.id == id {
+                    ret = task
+                }
+            }
+        }
         return ret
     }
     
-    func getAnotherUserTaskById(id: String, email: String) -> Task {
+    func getAnotherUserTaskById(id: String) -> Task {
         var ret = Task()
-        //        for task in fetchFriendsTasks(email: email) {
-        //            if task.id == id {
-        //                ret = task
-        //            }
-        //        }
+        for task in anotherTasks {
+            if task.id == id {
+                ret = task
+            }
+        }
         return ret
     }
     
@@ -93,5 +101,11 @@ extension AppViewModel {
                 print("Document successfully removed!")
             }
         }
+    }
+    
+    func isTaskInSelfTasks(taskID: String) -> Bool {
+        return self.tasks.contains(where: {
+            $0.id == taskID
+        })
     }
 }

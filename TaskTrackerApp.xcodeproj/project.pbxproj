@@ -36,6 +36,7 @@
 		488EC84929BBBDD800BCFD52 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84829BBBDD800BCFD52 /* Task.swift */; };
 		488EC84B29BBBE5B00BCFD52 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84A29BBBE5B00BCFD52 /* BubbleView.swift */; };
 		488EC84F29BBD7CE00BCFD52 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */; };
+		48D4EF7829D1DC1E00696D05 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4EF7729D1DC1E00696D05 /* TasksScrollView.swift */; };
 		48F7B2CB29BC880B00840E4B /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CA29BC880B00840E4B /* FeedView.swift */; };
 		48F7B2CD29BC881900840E4B /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CC29BC881900840E4B /* FriendsView.swift */; };
 		48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */; };
@@ -85,6 +86,7 @@
 		488EC84829BBBDD800BCFD52 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		488EC84A29BBBE5B00BCFD52 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		48D4EF7729D1DC1E00696D05 /* TasksScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
 		48F7B2CA29BC880B00840E4B /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		48F7B2CC29BC881900840E4B /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		48F7B2CE29BC888300840E4B /* DevelommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelommentComponent.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				48F7B2E329C508A900840E4B /* TaskDescriptionView.swift */,
 				48F7B2E729C7A69D00840E4B /* CustomBackButton.swift */,
 				48F7B31B29CF33FC00840E4B /* SearchView.swift */,
+				48D4EF7729D1DC1E00696D05 /* TasksScrollView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				48F7B2DA29C3CA7B00840E4B /* FirebaseAuth.swift in Sources */,
 				48F7B2CF29BC888300840E4B /* DevelommentComponent.swift in Sources */,
 				488EC81529BB84E000BCFD52 /* Font+.swift in Sources */,
+				48D4EF7829D1DC1E00696D05 /* TasksScrollView.swift in Sources */,
 				488EC80229BB7E9F00BCFD52 /* WelcomeView.swift in Sources */,
 				48F7B2DC29C4BA0800840E4B /* TaskPageView.swift in Sources */,
 				48F7B2E429C508A900840E4B /* TaskDescriptionView.swift in Sources */,
