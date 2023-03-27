@@ -13,6 +13,7 @@ struct TaskPageView: View {
     private enum Constants {
         static let scrollHeight: CGFloat = 40
         static let linesSpacing: CGFloat = 6
+        static let trash: Image = Image(systemName: "trash.fill")
     }
     
     // MARK: - Fields
@@ -54,21 +55,23 @@ struct TaskPageView: View {
     
     private var barButtonView: some View {
         HStack (spacing: CommonConstants.smallContentSpacing) {
-            Image(systemName: "trash.fill")
-                .onTapGesture {
-                    showAlert = true
-                }
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Are you sure you want to delete task?"),
-                        message: Text("There is no undo"),
-                        primaryButton: .destructive(Text("Delete")) {
-                            viewModel.deleteTask(id: taskId)
-                            presentationMode.wrappedValue.dismiss()
-                        },
-                        secondaryButton: .cancel()
-                    )
-                }
+            if userOwner == viewModel.getUser() {
+                Constants.trash
+                    .onTapGesture {
+                        showAlert = true
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Are you sure you want to delete task?"),
+                            message: Text("There is no undo"),
+                            primaryButton: .destructive(Text("Delete")) {
+                                viewModel.deleteTask(id: taskId)
+                                presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+            }
             // TODO: вернуть, когда появятся уведомления
 //            Image(systemName: "bell.fill")
         }

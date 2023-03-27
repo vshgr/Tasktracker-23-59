@@ -23,9 +23,14 @@ struct TaskOwnerView: View {
                 .resizable()
                 .frame(width: Constants.imageWidth, height: Constants.imageWidth)
                 .aspectRatio(contentMode: .fit)
-            Text(user.name)
-                .foregroundColor(.black)
-                .font(.dl.ralewayMedium(15))
+            VStack(alignment: .leading) {
+                Text(user.name)
+                    .foregroundColor(.black)
+                    .font(.dl.ralewayMedium(15))
+                Text("@\(user.username)")
+                    .foregroundColor(.black)
+                    .font(.dl.ralewayMedium(12))
+            }
         }
     }
 }

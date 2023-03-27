@@ -31,29 +31,25 @@ struct TaskView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
-                if !selfTask {
-                    FriendHeaderView()
-                } else {
-                    // TODO: вернуть, когда появятся пермишены
-//                    Text(task.permission.rawValue)
-//                        .font(.dl.ralewayMedium(12))
-//                        .foregroundColor(Color.dl.hintCol())
-                }
+                // TODO: вернуть, когда появятся пермишены
+                //                    Text(task.permission.rawValue)
+                //                        .font(.dl.ralewayMedium(12))
+                //                        .foregroundColor(Color.dl.hintCol())
                 Text(viewModel.getTaskByID(id: taskID).name)
                     .font(.dl.ralewayBold(14))
                     .foregroundColor(Color.black)
                     .lineLimit(3)
                     .multilineTextAlignment(.leading)
-                    
+                
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
                     if viewModel.getTaskByID(id: taskID).deadlineDate != Date(timeIntervalSince1970: 0) {
                         BubbleView(bubbleText: viewModel.getTaskByID(id: taskID).deadlineDate.formatted(), isInteractable: false)
                     }
                     // TODO: вернуть, когда появятся группы
-//                    Text(task.groups.joined(separator: Constants.separator))
-//                        .font(CommonConstants.mainLabelFont)
-//                        .foregroundColor(Color.dl.hintCol())
-//                        .fixedSize(horizontal: false, vertical: true)
+                    //                    Text(task.groups.joined(separator: Constants.separator))
+                    //                        .font(CommonConstants.mainLabelFont)
+                    //                        .foregroundColor(Color.dl.hintCol())
+                    //                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             .padding(.all, CommonConstants.smallContentSpacing)
@@ -69,18 +65,15 @@ struct TaskView: View {
                         .opacity(isDone ? 0.3 : 1)
                 }
                 // TODO: вернуть, когда появятся группы
-//                Button(action: {}) {
-//                    Constants.add
-//                        .resizable()
-//                        .frame(width: 30, height: 30)
-//                        .foregroundColor(Color.dl.hintCol())
-//                }
+                //                Button(action: {}) {
+                //                    Constants.add
+                //                        .resizable()
+                //                        .frame(width: 30, height: 30)
+                //                        .foregroundColor(Color.dl.hintCol())
+                //                }
             }
             .padding(.leading, -25)
         }
-//        .onAppear () {
-//            self.viewModel.fetchData()
-//        }
     }
     
     // MARK: - Actions
