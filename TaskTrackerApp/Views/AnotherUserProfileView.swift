@@ -26,6 +26,7 @@ struct AnotherUserProfileView: View {
     
     init(user: User) {
         self.user = user
+        viewModel.fetchFriendsTasks(email: user.email)
     }
     
     // MARK: - Setups
@@ -55,9 +56,6 @@ struct AnotherUserProfileView: View {
                 
                 TasksScrollView(tasks: viewModel.anotherTasks, taskOwner: user, isSelf: false)
             }
-        }
-        .onAppear() {
-            viewModel.fetchFriendsTasks(email: user.email)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())

@@ -34,14 +34,14 @@ struct FriendsView: View {
                         }
                     }
                     
-                    if !viewModel.friends.isEmpty {
+                    if !viewModel.subscriptions.isEmpty {
                         Text("your friends")
                             .padding(.top, 20)
                             .font(.dl.ralewayBold(15))
                         ScrollView {
-                            ForEach(viewModel.friends.indices, id: \.self) { user in
-                                NavigationLink(destination: AnotherUserProfileView(user: viewModel.friends[user])) {
-                                    TaskOwnerView(user: viewModel.friends[user])
+                            ForEach(viewModel.subscriptions.indices, id: \.self) { user in
+                                NavigationLink(destination: AnotherUserProfileView(user: viewModel.subscriptions[user])) {
+                                    TaskOwnerView(user: viewModel.subscriptions[user])
                                         .padding(.top, CommonConstants.smallContentSpacing)
                                 }
                             }

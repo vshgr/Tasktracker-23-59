@@ -30,7 +30,7 @@ class AppViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var tasks = [Task]()
     @Published var anotherTasks = [Task]()
-    @Published var friends = [User]()
+    @Published var subscriptions = [User]()
     @Published var isUserLoggedOut = false
     let auth = Auth.auth()
     let db = Firestore.firestore()
@@ -67,14 +67,14 @@ class AppViewModel: ObservableObject {
                     let username = data["username"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
                     let pic = data["pic"] as? String ?? "none"
-                    let friendsEmails = data["friends"] as? [String] ?? [String]()
+                    let subscriptionsEmails = data["friends"] as? [String] ?? [String]()
                     
                     if auth.currentUser?.email == email {
-                        self.friends = friendsEmails.map { f in
+                        self.subscriptions = subscriptionsEmails.map { f in
                             return self.getUserByEmail(email: f) ?? User()
                         }
                     }
-                    return User(name: name, username: username, email: email, friends: friends, profilePicUrl: pic)
+                    return User(name: name, username: username, email: email, subscriptions: subscriptions, profilePicUrl: pic)
                 }
             }
             getTasks()
