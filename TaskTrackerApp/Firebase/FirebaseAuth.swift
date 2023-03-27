@@ -30,6 +30,7 @@ class AppViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var tasks = [Task]()
     @Published var anotherTasks = [Task]()
+    @Published var friends = [User]()
     @Published var isUserLoggedOut = false
     let auth = Auth.auth()
     let db = Firestore.firestore()
