@@ -30,6 +30,7 @@ class AppViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var tasks = [Task]()
     @Published var anotherTasks = [Task]()
+    @Published var friends = [User]()
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?
@@ -57,7 +58,12 @@ class AppViewModel: ObservableObject {
                     let username = data["username"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
                     let pic = data["pic"] as? String ?? "none"
-                    return User(name: name, username: username, email: email, profilePicUrl: pic)
+                    let friendsEmails = data["friends"] as? [String] ?? [String]()
+                    
+                    self.friends = friendsEmails.map { f in
+                        return self.getUserByEmail(email: f) ?? User()
+                    }
+                    return User(name: name, username: username, email: email, friends: friends, profilePicUrl: pic)
                 }
             }
             getTasks()
@@ -70,6 +76,16 @@ class AppViewModel: ObservableObject {
                 return user
             }
         }
+        return nil
+    }
+    
+    func getUserByEmail(email: String) -> User? {
+        for user in users {
+            if user.email == email {
+                return user
+            }
+        }
+        
         return nil
     }
     

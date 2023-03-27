@@ -34,6 +34,13 @@ struct FriendsView: View {
                             }
                         }
                     ScrollView {
+                        // MARK: отображение чисто друзей
+//                        ForEach(viewModel.friends.indices, id: \.self) { user in
+//                            NavigationLink(destination: AnotherUserProfileView(user: viewModel.friends[user])) {
+//                                TaskOwnerView(user: viewModel.friends[user])
+//                                     .padding(.top, CommonConstants.smallContentSpacing)
+//                            }
+//                        }
                         if (!searchedUsers.isEmpty) {
                             ForEach(searchedUsers.indices, id: \.self) { user in
                                 NavigationLink(destination: AnotherUserProfileView(user: searchedUsers[user])) {
@@ -49,6 +56,9 @@ struct FriendsView: View {
                 
             }
             .navigationBarBackButtonHidden(true)
+            .onAppear() {
+                viewModel.fetchData()
+            }
         }
     }
 }
