@@ -67,7 +67,7 @@ class AppViewModel: ObservableObject {
                     let username = data["username"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
                     let pic = data["pic"] as? String ?? "none"
-                    let subscriptionsEmails = data["friends"] as? [String] ?? [String]()
+                    let subscriptionsEmails = data["subscriptions"] as? [String] ?? [String]()
                     
                     if auth.currentUser?.email == email {
                         self.subscriptions = subscriptionsEmails.map { f in

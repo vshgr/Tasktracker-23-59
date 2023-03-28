@@ -108,4 +108,8 @@ extension AppViewModel {
             $0.id == taskID
         })
     }
+    
+    func addUserTaskToSelf(task: Task) {
+        self.tasks.append(task)
+    }
 }

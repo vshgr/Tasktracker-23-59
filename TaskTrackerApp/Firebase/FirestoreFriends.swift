@@ -31,4 +31,20 @@ extension AppViewModel {
         }
         return ret
     }
+    
+    func addSubscription(email: String) {
+        let userRef = db.collection("users").document(auth.currentUser?.email ?? "")
+
+        userRef.updateData([
+            "subscriptions": FieldValue.arrayUnion([email])
+        ])
+    }
+    
+    func removeSubscription(email: String) {
+        let userRef = db.collection("users").document(auth.currentUser?.email ?? "")
+        
+        userRef.updateData([
+            "subscriptions": FieldValue.arrayRemove([email])
+        ])
+    }
 }
