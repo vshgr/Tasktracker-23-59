@@ -29,6 +29,5 @@ struct TasksScrollView: View {
             }
         }
         .padding(.top, CommonConstants.contentStackSpacing)
-        .padding(.horizontal, Grid.stripe)
     }
 }

@@ -36,7 +36,18 @@ struct AnotherUserProfileView: View {
             VStack (alignment: .leading) {
                 ProfileInfoView(user: user)
                     .padding(.top, CommonConstants.topSpace)
-                    .padding(.horizontal, Grid.stripe)
+                
+                if viewModel.isUserInSubscriptions(email: user.email) {
+                    ButtonView(title: "unsubscribe", height: 50) {
+                        viewModel.removeSubscription(email: user.email)
+                    }
+                        .padding(.top, CommonConstants.smallContentSpacing)
+                } else {
+                    ButtonView(title: "subscribe", height: 50) {
+                        viewModel.addSubscription(email: user.email)
+                    }
+                        .padding(.top, CommonConstants.smallContentSpacing)
+                }
                 
                 HStack(spacing: CommonConstants.smallContentSpacing) {
                     Text(Constants.title)
@@ -52,20 +63,19 @@ struct AnotherUserProfileView: View {
                     })
                 }
                 .padding(.top, CommonConstants.smallContentSpacing)
-                .padding(.horizontal, Grid.stripe)
-                
                 TasksScrollView(tasks: viewModel.anotherTasks, taskOwner: user, isSelf: false)
             }
+            .padding(.horizontal, Grid.stripe)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
     }
 }
 
-//struct AnotherUserProfileViewpr: PreviewProvider {
-//    static var previews: some View {
-//        AnotherUserProfileView(user: User())
-//    }
-//}
+struct AnotherUserProfileViewpr: PreviewProvider {
+    static var previews: some View {
+        AnotherUserProfileView(user: User())
+    }
+}
 
 

@@ -68,13 +68,8 @@ class AppViewModel: ObservableObject {
                     let email = data["email"] as? String ?? ""
                     let pic = data["pic"] as? String ?? "none"
                     let subscriptionsEmails = data["subscriptions"] as? [String] ?? [String]()
-                    
-                    if auth.currentUser?.email == email {
-                        self.subscriptions = subscriptionsEmails.map { f in
-                            return self.getUserByEmail(email: f) ?? User()
-                        }
-                    }
-                    return User(name: name, username: username, email: email, subscriptions: subscriptions, profilePicUrl: pic)
+                
+                    return User(name: name, username: username, email: email, subscriptions: subscriptionsEmails, profilePicUrl: pic)
                 }
             }
             getTasks()

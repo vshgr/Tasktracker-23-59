@@ -47,4 +47,19 @@ extension AppViewModel {
             "subscriptions": FieldValue.arrayRemove([email])
         ])
     }
+    
+    func isUserInSubscriptions(email: String) -> Bool {
+        for sub in getUser()?.subscriptions ?? [] {
+            if sub == email {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func fetchSubscriptions() {
+        self.subscriptions = getUser()?.subscriptions.map { user -> User in
+            return getUserByEmail(email: user) ?? User()
+        } ?? []
+    }
 }

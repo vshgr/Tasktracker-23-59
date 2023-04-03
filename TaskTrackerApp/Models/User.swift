@@ -9,7 +9,7 @@ struct User: Comparable {
     var name: String
     var username: String
     var email: String
-    var subscriptions: [User]
+    var subscriptions: [String]
     var profilePicUrl: String
     
     static func ==(lhs: User, rhs: User) -> Bool {
@@ -28,7 +28,7 @@ extension User {
         name = "Yana Barbashina"
         username = "yana_wishnya"
         email = "yana_wishnya@hse.ru"
-        subscriptions = [User]()
+        subscriptions = [String]()
         profilePicUrl = "dog"
     }
 }

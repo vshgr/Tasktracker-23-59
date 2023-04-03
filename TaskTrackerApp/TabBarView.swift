@@ -35,7 +35,7 @@ struct CustomTabView: View {
             FriendsView()
                 .tabItem {
                     Constants.friends.renderingMode(.template)
-                    Text("Friends")
+                    Text("Subscriptions")
                 }
                 .tag(3)
                 .badge(3)

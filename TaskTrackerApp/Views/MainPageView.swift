@@ -33,7 +33,6 @@ struct MainPageView: View {
                 VStack (alignment: .leading) {
                     ProfileInfoView(user: viewModel.getUser() ?? User())
                         .padding(.top, CommonConstants.topSpace)
-                        .padding(.horizontal, Grid.stripe)
                         .onTapGesture {
                             isProfilePresented = true
                         }
@@ -51,11 +50,11 @@ struct MainPageView: View {
                                 .frame(width: 20, height: 20)
                         })
                     }
-                    .padding(.top, CommonConstants.smallContentSpacing)
-                    .padding(.horizontal, Grid.stripe)
-                    
+                    .padding(.top, CommonConstants.smallContentSpacing)                    
                     TasksScrollView(tasks: viewModel.tasks, taskOwner: viewModel.getUser() ?? User(), isSelf: true)
                 }
+                .padding(.horizontal, Grid.stripe)
+
                 VStack (alignment: .trailing) {
                     Spacer()
                     HStack {

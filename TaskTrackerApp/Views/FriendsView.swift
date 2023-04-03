@@ -18,7 +18,7 @@ struct FriendsView: View {
             ZStack {
                 Color.white.edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
-                    Text("Friends")
+                    Text("Subscriptions")
                         .font(.dl.ralewayBold(20))
                         .padding(.top, CommonConstants.topSpace)
                     SearchView(text: $searchText) {
@@ -35,7 +35,7 @@ struct FriendsView: View {
                     }
                     
                     if !viewModel.subscriptions.isEmpty {
-                        Text("your friends")
+                        Text("your subscriptions")
                             .padding(.top, 20)
                             .font(.dl.ralewayBold(15))
                         ScrollView {
@@ -60,6 +60,8 @@ struct FriendsView: View {
                                 }
                             }
                         }
+                    } else {
+                        Spacer()
                     }
                 }
                 .padding(.horizontal, Grid.stripe)
@@ -67,6 +69,7 @@ struct FriendsView: View {
             .navigationBarBackButtonHidden(true)
             .onAppear() {
                 viewModel.fetchData()
+                viewModel.fetchSubscriptions()
             }
         }
     }
