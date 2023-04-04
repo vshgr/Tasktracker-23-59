@@ -19,7 +19,7 @@ struct TasksScrollView: View {
                 if tasks.count > 0 {
                     ForEach(tasks) { task in
                         NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: taskOwner)) {
-                            TaskView(taskOwner: taskOwner, taskID: task.id ?? "", selfTask: isSelf)
+                            TaskView(isDone: task.done ,taskOwner: taskOwner, taskID: task.id ?? "", selfTask: isSelf)
                         }
                     }
                 } else {

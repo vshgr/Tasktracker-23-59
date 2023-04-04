@@ -20,8 +20,8 @@ struct TaskView: View {
     
     // MARK: - Properties
     
-    @State private var isDone = false
     @State private var added = false
+    @State var isDone: Bool
     var taskOwner: User
     var taskID: String
     var selfTask: Bool
@@ -95,9 +95,10 @@ struct TaskView: View {
     
     // MARK: - Actions
     
-    private func setDone(){
+    private func setDone() {
         withAnimation(.easeInOut(duration: 0.5)) {
-            isDone.toggle()
+            self.isDone.toggle()
+            viewModel.setTaskDone(taskID: taskID, isDone: isDone)
         }
     }
     
