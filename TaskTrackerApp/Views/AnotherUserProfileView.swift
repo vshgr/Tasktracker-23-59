@@ -53,14 +53,14 @@ struct AnotherUserProfileView: View {
                     Text(Constants.title)
                         .font(.dl.ralewayBold(20))
                         .foregroundColor(.black)
-                    
-                    Button(action: {
-                        isFilterPagePresented = true
-                    }, label: {
-                        Constants.filter
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    })
+//                    
+//                    Button(action: {
+//                        isFilterPagePresented = true
+//                    }, label: {
+//                        Constants.filter
+//                            .resizable()
+//                            .frame(width: 20, height: 20)
+//                    })
                 }
                 .padding(.top, CommonConstants.smallContentSpacing)
                 TasksScrollView(tasks: viewModel.anotherTasks, taskOwner: user, isSelf: false)

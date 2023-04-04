@@ -27,6 +27,8 @@ struct TaskView: View {
     var selfTask: Bool
     @ObservedObject private var viewModel = AppViewModel()
     private let width: CGFloat = 13
+    @State private var task: Task = Task()
+    @State private var boarderColor: Color = Color.black
     
     // MARK: - Views
     
@@ -44,7 +46,7 @@ struct TaskView: View {
                     .multilineTextAlignment(.leading)
                 
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    if viewModel.getTaskByID(id: taskID).deadlineDate != Date(timeIntervalSince1970: 0) {
+                    if viewModel.getTaskByID(id: taskID).deadlineDate !=  Date.init(timeIntervalSince1970: 0) {
                         BubbleView(bubbleText: viewModel.getTaskByID(id: taskID).deadlineDate.formatted(), isInteractable: false)
                     }
                     // TODO: вернуть, когда появятся группы
@@ -84,10 +86,10 @@ struct TaskView: View {
                 //                        .foregroundColor(Color.dl.hintCol())
                 //                }
             }
-            .onAppear() {
-                viewModel.fetchFriendsTasks(email: taskOwner.email)
-            }
             .padding(.leading, -25)
+        }
+        .onAppear() {
+            viewModel.fetchFriendsTasks(email: taskOwner.email)
         }
     }
     
@@ -103,6 +105,8 @@ struct TaskView: View {
         withAnimation(.easeInOut(duration: 0.5)) {
             added = true
         }
+        task = viewModel.getTaskByID(id: taskID)
+        viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: task)
     }
 }
 
