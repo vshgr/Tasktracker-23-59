@@ -8,15 +8,47 @@
 import SwiftUI
 
 struct FeedView: View {
-    let developmentComponent = DevelopmentComponent()
-    
+    @ObservedObject private var viewModel = AppViewModel()
+    @State private var text: String = ""
+    @State private var tasks: [Task] = [Task]()
+
     var body: some View {
-        ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
-            developmentComponent
-                .padding()
-                .navigationBarHidden(true)
+        NavigationStack {
+            ZStack {
+                Color.white.edgesIgnoringSafeArea(.all)
+                VStack(alignment: .leading) {
+                    Text("Feed")
+                        .font(.dl.ralewayBold(20))
+                        .padding(.top, CommonConstants.topSpace)
+                    SearchView(text: $text)
+                    ScrollView (showsIndicators: false) {
+                        VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
+                            if viewModel.fetchFeed().count > 0 {
+                                ForEach(viewModel.fetchFeed()) { task in
+                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""))) {
+                                        TaskView(isDone: task.done ,taskOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""), taskID: task.id ?? "", selfTask: false)
+                                    }
+                                }
+                            } else {
+                                Text("no tasks :(")
+                                    .foregroundColor(.dl.hintCol())
+                            }
+                        }
+                    }
+                    .onAppear() {
+                        viewModel.fetchSubscriptions()
+                    }
+                    .padding(.top, CommonConstants.contentStackSpacing)
+                }
+                .padding(.horizontal, Grid.stripe)
+            }
         }
+    }
+}
+
+struct FeedV: PreviewProvider {
+    static var previews: some View {
+        FeedView()
     }
 }
 

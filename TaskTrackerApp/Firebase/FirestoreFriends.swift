@@ -34,7 +34,7 @@ extension AppViewModel {
     
     func addSubscription(email: String) {
         let userRef = db.collection("users").document(auth.currentUser?.email ?? "")
-
+        
         userRef.updateData([
             "subscriptions": FieldValue.arrayUnion([email])
         ])
@@ -61,5 +61,25 @@ extension AppViewModel {
         self.subscriptions = getUser()?.subscriptions.map { user -> User in
             return getUserByEmail(email: user) ?? User()
         } ?? []
+    }
+    
+    func fetchFeed() -> [Task] {
+        var tasks = [Task]()
+        for user in subscriptions {
+            fetchFriendsTasks(email: user.email)
+            tasks.append(contentsOf: anotherTasks)
+        }
+        return tasks
+    }
+    
+    func getUserByTaskId(taskId: String) -> User {
+        for user in subscriptions {
+            if subTasks.contains(where: { task in
+                return task.id == taskId
+            }) {
+                return user
+            }
+        }
+        return User()
     }
 }

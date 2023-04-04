@@ -75,6 +75,14 @@ extension AppViewModel {
             }
         }
         
+        if !fetchFeed().isEmpty {
+            for task in fetchFeed() {
+                if task.id == id {
+                    ret = task
+                }
+            }
+        }
+        
         if !anotherTasks.isEmpty {
             for task in anotherTasks {
                 if task.id == id {
@@ -82,6 +90,7 @@ extension AppViewModel {
                 }
             }
         }
+        
         return ret
     }
     
