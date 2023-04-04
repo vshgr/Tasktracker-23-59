@@ -42,7 +42,17 @@ struct CreateAccountView: View {
             Spacer()
             ButtonView(title: "Create account") {
                 createButtonPressed()
-                viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField, pic: userImage)
+                viewModel.insertUserInfo(email: viewModel.getUser()?.email ?? "test@gmail.com", username: usernameField, name: nameField, pic: userImage) { result in
+                    switch result {
+                    case (.success(_)) :
+                        navigate = true
+                    case(.failure(let error)):
+                        navigate = false
+                        viewModel.errorMessage = error.errorMessage
+                        errorMessage = viewModel.errorMessage ?? ""
+                        showAlert = true
+                    }
+                }
             }
             .padding(.bottom, Grid.stripe * 2)
             .padding(.horizontal, Grid.stripe * 2)

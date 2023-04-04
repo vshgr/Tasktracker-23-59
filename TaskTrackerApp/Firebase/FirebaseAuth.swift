@@ -139,12 +139,35 @@ class AppViewModel: ObservableObject {
         }
     }
     
-    func insertUserInfo(email: String, username: String, name: String, pic: String) {
-        let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
-        docRef.updateData([
-            "username": username,
-            "name": name,
-            "pic": pic
-        ])
+    func removeUser(email: String) {
+        db.collection("users").document(email).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
+    
+    func insertUserInfo(email: String, username: String, name: String, pic: String, complition: @escaping (Result<Bool, FBError>) -> Void) {
+        fetchData()
+        var flag = false
+        for usr in users {
+            if usr.username == username {
+                flag = true
+            }
+        }
+        
+        if flag {
+            complition(.failure(.error("User with such username already exists")))
+        } else {
+            let docRef = db.collection("users").document(auth.currentUser?.email ?? "")
+            docRef.updateData([
+                "username": username,
+                "name": name,
+                "pic": pic
+            ])
+            complition(.success(true))
+        }
     } 
 }
