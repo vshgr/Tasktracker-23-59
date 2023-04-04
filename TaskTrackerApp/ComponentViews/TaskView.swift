@@ -27,6 +27,7 @@ struct TaskView: View {
     var selfTask: Bool
     @ObservedObject private var viewModel = AppViewModel()
     private let width: CGFloat = 13
+    @State private var task: Task = Task()
     
     // MARK: - Views
     
@@ -103,6 +104,8 @@ struct TaskView: View {
         withAnimation(.easeInOut(duration: 0.5)) {
             added = true
         }
+        task = viewModel.getTaskByID(id: taskID)
+        viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: task)
     }
 }
 

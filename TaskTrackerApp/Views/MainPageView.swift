@@ -42,13 +42,13 @@ struct MainPageView: View {
                             .font(.dl.ralewayBold(20))
                             .foregroundColor(.black)
                         
-                        Button(action: {
-                            isFilterPagePresented = true
-                        }, label: {
-                            Constants.filter
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        })
+//                        Button(action: {
+//                            isFilterPagePresented = true
+//                        }, label: {
+//                            Constants.filter
+//                                .resizable()
+//                                .frame(width: 20, height: 20)
+//                        })
                     }
                     .padding(.top, CommonConstants.smallContentSpacing)                    
                     TasksScrollView(tasks: viewModel.tasks, taskOwner: viewModel.getUser() ?? User(), isSelf: true)
