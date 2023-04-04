@@ -27,7 +27,7 @@ struct NewTaskPageView: View {
         ButtonView(title: "Create") {
             print("im here")
             if Validate.checkInputCorrect(type: .normal, value: title) {
-                viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate))
+                viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: Task(name: title, description: description, deadlineDate: deadlineDate, done: false))
                 presentationMode.wrappedValue.dismiss()
             } else {
                 showAlert = true

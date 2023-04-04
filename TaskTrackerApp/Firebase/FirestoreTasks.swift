@@ -41,7 +41,8 @@ extension AppViewModel {
                 let description = data["description"] as? String ?? ""
                 let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
                 let date = deadlineDate.dateValue()
-                return Task(id: id, name: name, description: description, deadlineDate: date)
+                let done = data["done"] as? Bool ?? false
+                return Task(id: id, name: name, description: description, deadlineDate: date, done: done)
             }
         }
     }
@@ -60,7 +61,8 @@ extension AppViewModel {
                 let description = data["description"] as? String ?? ""
                 let deadlineDate = data["deadlineDate"] as? Timestamp ?? Timestamp()
                 let date = deadlineDate.dateValue()
-                return Task(id: id, name: name, description: description, deadlineDate: date)
+                let done = data["done"] as? Bool ?? false
+                return Task(id: id, name: name, description: description, deadlineDate: date, done: done)
             }
         }
     }
@@ -111,5 +113,9 @@ extension AppViewModel {
     
     func addUserTaskToSelf(task: Task) {
         self.tasks.append(task)
+    }
+    
+    func setTaskDone(taskID: Int, isDone: Bool) {
+        self.tasks[taskID].done = isDone
     }
 }
