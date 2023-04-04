@@ -107,7 +107,7 @@ extension AppViewModel {
             "done": isDone
         ])
     }
-    
+
     func isInSelfTasks(task: Task) -> Bool {
         for tsk in self.tasks {
             if tsk.name == task.name && tsk.deadlineDate == task.deadlineDate && tsk.description == task.description {
@@ -115,5 +115,6 @@ extension AppViewModel {
             }
         }
         return false
+
     }
 }
