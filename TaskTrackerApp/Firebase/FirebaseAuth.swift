@@ -32,6 +32,7 @@ class AppViewModel: ObservableObject {
     @Published var anotherTasks = [Task]()
     @Published var subscriptions = [User]()
     @Published var isUserLoggedOut = false
+    @Published var subTasks = [Task]()
     let auth = Auth.auth()
     let db = Firestore.firestore()
     @Published var errorMessage: String?

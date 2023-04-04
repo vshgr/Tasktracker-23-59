@@ -29,7 +29,7 @@ struct FriendsView: View {
                         searchedUsers.removeAll()
                         let user = viewModel.searchUserByUsername(username: searchText.trimmingCharacters(in: .whitespaces))
                         print(user)
-                        if user != User() {
+                        if user != User() && user != viewModel.getUser() {
                             searchedUsers.append(user)
                         }
                     }

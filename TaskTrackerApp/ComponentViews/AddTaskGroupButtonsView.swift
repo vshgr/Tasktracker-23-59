@@ -28,8 +28,8 @@ struct AddTaskGroupButtonsView: View {
                     isAddTaskClicked = true
                 }
                 .frame(width: Constants.width)
-                ButtonView(title: "Add group", height: 40)
-                    .frame(width: Constants.width)
+//                ButtonView(title: "Add group", height: 40)
+//                    .frame(width: Constants.width)
                 Button(action: {
                     buttonClicked = false
                 }, label: {
