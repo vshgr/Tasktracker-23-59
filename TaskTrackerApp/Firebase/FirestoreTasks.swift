@@ -83,16 +83,6 @@ extension AppViewModel {
         return ret
     }
     
-    func getAnotherUserTaskById(id: String) -> Task {
-        var ret = Task()
-        for task in anotherTasks {
-            if task.id == id {
-                ret = task
-            }
-        }
-        return ret
-    }
-    
     func deleteTask(id: String) {
         db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").document(id).delete() { err in
             if let err = err {
@@ -101,11 +91,5 @@ extension AppViewModel {
                 print("Document successfully removed!")
             }
         }
-    }
-    
-    func isTaskInSelfTasks(taskID: String) -> Bool {
-        return self.tasks.contains(where: {
-            $0.id == taskID
-        })
     }
 }
