@@ -96,15 +96,24 @@ extension AppViewModel {
     }
     
     func setTaskDone(taskID: String, isDone: Bool) {
-//        for task in tasks {
-//            if task.id == taskID {
-//                task.done = isDone
-//            }
-//        }
-//        
+        //        for task in tasks {
+        //            if task.id == taskID {
+        //                task.done = isDone
+        //            }
+        //        }
+        //        
         let docRef = db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").document(taskID)
         docRef.updateData([
             "done": isDone
         ])
+    }
+    
+    func isInSelfTasks(task: Task) -> Bool {
+        for tsk in self.tasks {
+            if tsk.name == task.name && tsk.deadlineDate == task.deadlineDate && tsk.description == task.description {
+                return true
+            }
+        }
+        return false
     }
 }

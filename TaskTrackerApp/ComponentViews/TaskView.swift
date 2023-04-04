@@ -70,13 +70,14 @@ struct TaskView: View {
                             .opacity(isDone ? 0.3 : 1)
                     }
                 } else {
-                    Button(action: addToSelfTasks) {
-                        Image("addToGroup")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .opacity(added ? 0.3 : 1)
+                    if !added && !viewModel.isInSelfTasks(task: viewModel.getTaskByID(id: taskID)) {
+                        Button(action: addToSelfTasks) {
+                            Image("addToGroup")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .opacity(added ? 0.3 : 1)
+                        }
                     }
-                    .disabled(added)
                 }
                 // TODO: вернуть, когда появятся группы
                 //                Button(action: {}) {
@@ -103,9 +104,7 @@ struct TaskView: View {
     }
     
     private func addToSelfTasks() {
-        withAnimation(.easeInOut(duration: 0.5)) {
-            added = true
-        }
+        added = true
         task = viewModel.getTaskByID(id: taskID)
         viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: task)
     }
