@@ -26,7 +26,7 @@ struct AnotherUserProfileView: View {
     
     init(user: User) {
         self.user = user
-        viewModel.fetchFriendsTasks(email: user.email)
+        viewModel.fetchData()
     }
     
     // MARK: - Setups
@@ -69,6 +69,9 @@ struct AnotherUserProfileView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
+        .onAppear() {
+            viewModel.fetchFriendsTasks(email: user.email)
+        }
     }
 }
 

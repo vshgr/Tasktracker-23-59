@@ -74,6 +74,10 @@ class AppViewModel: ObservableObject {
                 }
             }
             getTasks()
+            fetchSubscriptions()
+            for elem in subscriptions {
+                fetchFriendsTasks(email: elem.email)
+            }
         }
     }
     
