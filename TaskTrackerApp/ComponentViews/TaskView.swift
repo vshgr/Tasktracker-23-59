@@ -23,11 +23,12 @@ struct TaskView: View {
     @State private var added = false
     @State var isDone: Bool
     var taskOwner: User
-    var taskID: String
+//    var taskID: String
+    var task: Task
     var selfTask: Bool
     @ObservedObject private var viewModel = AppViewModel()
     private let width: CGFloat = 13
-    @State private var task: Task = Task()
+//    @State private var task: Task = Task()
     @State private var boarderColor: Color = Color.black
     
     // MARK: - Views
@@ -39,15 +40,15 @@ struct TaskView: View {
                 //                    Text(task.permission.rawValue)
                 //                        .font(.dl.ralewayMedium(12))
                 //                        .foregroundColor(Color.dl.hintCol())
-                Text(viewModel.getTaskByID(id: taskID).name)
+                Text(task.name)
                     .font(.dl.ralewayBold(14))
                     .foregroundColor(Color.black)
                     .lineLimit(3)
                     .multilineTextAlignment(.leading)
                 
                 HStack(spacing: CommonConstants.horizontalStackSpacing) {
-                    if viewModel.getTaskByID(id: taskID).deadlineDate !=  Date.init(timeIntervalSince1970: 0) {
-                        BubbleView(bubbleText: viewModel.getTaskByID(id: taskID).deadlineDate.formatted(), isInteractable: false)
+                    if task.deadlineDate !=  Date.init(timeIntervalSince1970: 0) {
+                        BubbleView(bubbleText: task.deadlineDate.formatted(), isInteractable: false)
                     }
                     // TODO: вернуть, когда появятся группы
                     //                    Text(task.groups.joined(separator: Constants.separator))
@@ -70,7 +71,7 @@ struct TaskView: View {
                             .opacity(isDone ? 0.3 : 1)
                     }
                 } else {
-                    if !added && !viewModel.isInSelfTasks(task: viewModel.getTaskByID(id: taskID)) {
+                    if !added && !viewModel.isInSelfTasks(task: task) {
                         Button(action: addToSelfTasks) {
                             Image("addToGroup")
                                 .resizable()
@@ -99,13 +100,13 @@ struct TaskView: View {
     private func setDone() {
         withAnimation(.easeInOut(duration: 0.5)) {
             self.isDone.toggle()
-            viewModel.setTaskDone(taskID: taskID, isDone: isDone)
+            viewModel.setTaskDone(taskID: task.id ?? "", isDone: isDone)
         }
     }
     
     private func addToSelfTasks() {
         added = true
-        task = viewModel.getTaskByID(id: taskID)
+//        let task = viewModel.getTaskByID(id: task.id)
         viewModel.insertTask(email: viewModel.getUser()?.email ?? "", task: task)
     }
 }

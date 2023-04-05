@@ -25,8 +25,8 @@ struct FeedView: View {
                         VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                             if viewModel.fetchFeed().count > 0 {
                                 ForEach(viewModel.fetchFeed()) { task in
-                                    NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""))) {
-                                        TaskView(isDone: task.done ,taskOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""), taskID: task.id ?? "", selfTask: false)
+                                    NavigationLink(destination: TaskPageView(task: task, userOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""))) {
+                                        TaskView(isDone: task.done ,taskOwner: viewModel.getUserByTaskId(taskId: task.id ?? ""), task: task, selfTask: false)
                                     }
                                 }
                             } else {

@@ -18,8 +18,9 @@ struct TasksScrollView: View {
             VStack(alignment: .leading, spacing: CommonConstants.contentStackSpacing) {
                 if tasks.count > 0 {
                     ForEach(tasks) { task in
-                        NavigationLink(destination: TaskPageView(taskId: task.id ?? "", userOwner: taskOwner)) {
-                            TaskView(isDone: task.done ,taskOwner: taskOwner, taskID: task.id ?? "", selfTask: isSelf)
+                        NavigationLink(destination: TaskPageView(task: task, userOwner: taskOwner)) {
+//                            TaskView(isDone: task.done ,taskOwner: taskOwner, taskID: task.id ?? "", selfTask: isSelf)
+                            TaskView(isDone: task.done ,taskOwner: taskOwner, task: task, selfTask: isSelf)
                         }
                     }
                 } else {

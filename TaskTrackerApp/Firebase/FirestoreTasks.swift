@@ -67,33 +67,6 @@ extension AppViewModel {
         }
     }
     
-    func getTaskByID (id: String) -> Task {
-        var ret = Task()
-        for task in tasks {
-            if task.id == id {
-                ret = task
-            }
-        }
-        
-        if !fetchFeed().isEmpty {
-            for task in fetchFeed() {
-                if task.id == id {
-                    ret = task
-                }
-            }
-        }
-        
-        if !anotherTasks.isEmpty {
-            for task in anotherTasks {
-                if task.id == id {
-                    ret = task
-                }
-            }
-        }
-        
-        return ret
-    }
-    
     func deleteTask(id: String) {
         db.collection("users").document(auth.currentUser?.email ?? "").collection("tasks").document(id).delete() { err in
             if let err = err {

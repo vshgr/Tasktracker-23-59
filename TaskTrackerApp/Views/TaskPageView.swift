@@ -17,7 +17,8 @@ struct TaskPageView: View {
     }
     
     // MARK: - Fields
-    var taskId: String
+//    var taskId: String
+    var task: Task
     var userOwner: User
     @ObservedObject private var viewModel = AppViewModel()
     @State private var showAlert: Bool = false
@@ -31,18 +32,18 @@ struct TaskPageView: View {
             HStack {
                 TaskOwnerView(user: userOwner)
                 Spacer()
-                if viewModel.getTaskByID(id: taskId).deadlineDate != Date(timeIntervalSince1970: 0) {
-                    Text(viewModel.getTaskByID(id: taskId).deadlineDate.formatted())
+                if task.deadlineDate != Date(timeIntervalSince1970: 0) {
+                    Text(task.deadlineDate.formatted())
                         .font(.system(size: 12))
                 }
             }
             // TODO: вернуть, когда появятся группы
             //            groupsScroll
             //                .frame(height: Constants.scrollHeight)
-            Text(viewModel.getTaskByID(id: taskId).name)
+            Text(task.name)
                 .font(.dl.ralewayBold())
             ScrollView {
-                Text(viewModel.getTaskByID(id: taskId).description)
+                Text(task.description)
                     .lineSpacing(Constants.linesSpacing)
                     .font(.dl.ralewayMedium())
             }
@@ -68,7 +69,7 @@ struct TaskPageView: View {
                             title: Text("Are you sure you want to delete task?"),
                             message: Text("There is no undo"),
                             primaryButton: .destructive(Text("Delete")) {
-                                viewModel.deleteTask(id: taskId)
+                                viewModel.deleteTask(id: task.id ?? "")
                                 presentationMode.wrappedValue.dismiss()
                             },
                             secondaryButton: .cancel()
