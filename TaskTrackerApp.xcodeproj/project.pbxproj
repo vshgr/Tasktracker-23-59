@@ -150,13 +150,13 @@
 		488EC7FE29BB7E9F00BCFD52 /* TaskTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
-				48F7B2D829C3CA5400840E4B /* Firebase */,
 				488EC82E29BB8F7900BCFD52 /* Info.plist */,
 				488EC83E29BBBC6900BCFD52 /* Models */,
+				488EC81629BB85EC00BCFD52 /* Views */,
+				48F7B2D829C3CA5400840E4B /* ViewModel */,
 				488EC81929BB871200BCFD52 /* Fonts */,
 				488EC81829BB860700BCFD52 /* ComponentViews */,
 				488EC81729BB85FD00BCFD52 /* Common */,
-				488EC81629BB85EC00BCFD52 /* Views */,
 				488EC81329BB84B600BCFD52 /* Extentions */,
 				488EC7FF29BB7E9F00BCFD52 /* SwiftUITestApp.swift */,
 				488EC84E29BBD7CE00BCFD52 /* TabBarView.swift */,
@@ -253,14 +253,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		48F7B2D829C3CA5400840E4B /* Firebase */ = {
+		48F7B2D829C3CA5400840E4B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				48F7B2D929C3CA7B00840E4B /* FirebaseAuth.swift */,
 				48F7B2E929C7AA0400840E4B /* FirestoreTasks.swift */,
 				48F7B31D29CF387E00840E4B /* FirestoreFriends.swift */,
 			);
-			path = Firebase;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
