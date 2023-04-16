@@ -13,7 +13,6 @@ struct WelcomeView: View {
     @State var navigateToLogin: Bool = false
     @State var navigateToRegister: Bool = false
 
-    
     // MARK: - Body
     var body: some View {
         NavigationStack {
